@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.WindowModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(532, 221)
+        MainWindow.resize(532, 250)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -35,15 +35,295 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/Icon/Files/Icon/TimeES icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet("\n"
-"")
+        MainWindow.setStyleSheet("QDialog QToolButton {\n"
+"    color: #6e6e6e;\n"
+"    text-align: center;\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0.3, x2:0, y2:1, stop:0 #f5f5f5, stop:1 #e6e6e6);\n"
+"    border: 1px solid #d2d2d2;\n"
+"    border-bottom-color: #c3c3c3; /* simulates shadow under the button */\n"
+"    padding: 0px; /* different than regular QPushButton */\n"
+"    margin: 2px; /* different than regular QPushButton */\n"
+"    min-height: 16px; /* same as QTabBar QPushButton min-width */\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QDialog QToolButton:hover,\n"
+"QDialog QToolButton:focus {\n"
+"    color: white;\n"
+"    border-color: #3874f2;\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #5e90fa, stop:1 #3874f2);\n"
+"}\n"
+"\n"
+"QDialog QToolButton:disabled,\n"
+"QDialog QToolButton:disabled:checked {\n"
+"    color: #b6b6b6;\n"
+"    border-color: #e6e6e6;\n"
+"    background-color: #e6e6e6;\n"
+"}\n"
+"\n"
+"QDialog QToolButton:pressed {\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #3874f2, stop:1 #5e90fa);\n"
+"}")
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
         MainWindow.setUnifiedTitleAndToolBarOnMac(False)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
-        self.Start_PB = QtWidgets.QPushButton(self.centralwidget)
-        self.Start_PB.setGeometry(QtCore.QRect(370, 40, 141, 51))
+        self.Top = QtWidgets.QFrame(self.centralwidget)
+        self.Top.setGeometry(QtCore.QRect(0, 0, 541, 21))
+        self.Top.setMouseTracking(True)
+        self.Top.setStyleSheet("background-color: rgb(0, 0, 0);")
+        self.Top.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.Top.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Top.setObjectName("Top")
+        self.win_title = QtWidgets.QLabel(self.Top)
+        self.win_title.setGeometry(QtCore.QRect(6, 2, 161, 21))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Heavy")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.win_title.setFont(font)
+        self.win_title.setStyleSheet("color: rgb(255, 255, 255);")
+        self.win_title.setScaledContents(True)
+        self.win_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.win_title.setOpenExternalLinks(False)
+        self.win_title.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
+        self.win_title.setObjectName("win_title")
+        self.cls_PB = QtWidgets.QPushButton(self.Top)
+        self.cls_PB.setGeometry(QtCore.QRect(513, 2, 16, 16))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Heavy")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.cls_PB.setFont(font)
+        self.cls_PB.setStyleSheet("#cls_PB {\n"
+"background-color:#B70F0F;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"color: rgb(255, 255, 255);\n"
+"font: 87 11pt \"Arca Majora 3 Heavy\";\n"
+"border-radius: 4px;\n"
+"}\n"
+"#cls_PB:hover\n"
+"{\n"
+"background-color:rgb(229, 0, 4);\n"
+"}\n"
+"#cls_PB:pressed\n"
+"{\n"
+"background-color: rgb(160, 0, 0);\n"
+"}")
+        self.cls_PB.setObjectName("cls_PB")
+        self.mini_PB = QtWidgets.QPushButton(self.Top)
+        self.mini_PB.setGeometry(QtCore.QRect(492, 2, 16, 16))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Heavy")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.mini_PB.setFont(font)
+        self.mini_PB.setStyleSheet("#mini_PB {\n"
+"background-color:#CB8B1D;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"color: rgb(255, 255, 255);\n"
+"font: 87 11pt \"Arca Majora 3 Heavy\";\n"
+"border-radius: 4px;\n"
+"}\n"
+"#mini_PB:hover\n"
+"{\n"
+"background-color:#e69d20;\n"
+"}\n"
+"#mini_PB:pressed\n"
+"{\n"
+"background-color:#996915;\n"
+"}")
+        self.mini_PB.setObjectName("mini_PB")
+        self.border_left = QtWidgets.QFrame(self.centralwidget)
+        self.border_left.setEnabled(False)
+        self.border_left.setGeometry(QtCore.QRect(0, 0, 3, 300))
+        self.border_left.setStatusTip("")
+        self.border_left.setAccessibleName("")
+        self.border_left.setAccessibleDescription("")
+        self.border_left.setStyleSheet("border: 3px solid black;")
+        self.border_left.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.border_left.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.border_left.setObjectName("border_left")
+        self.border_right = QtWidgets.QFrame(self.centralwidget)
+        self.border_right.setEnabled(False)
+        self.border_right.setGeometry(QtCore.QRect(529, 0, 3, 300))
+        self.border_right.setStatusTip("")
+        self.border_right.setAccessibleName("")
+        self.border_right.setAccessibleDescription("")
+        self.border_right.setStyleSheet("border: 3px solid black;")
+        self.border_right.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.border_right.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.border_right.setObjectName("border_right")
+        self.border_bottom = QtWidgets.QFrame(self.centralwidget)
+        self.border_bottom.setEnabled(False)
+        self.border_bottom.setGeometry(QtCore.QRect(0, 187, 532, 3))
+        self.border_bottom.setStatusTip("")
+        self.border_bottom.setAccessibleName("")
+        self.border_bottom.setAccessibleDescription("")
+        self.border_bottom.setStyleSheet("border: 3px solid black;")
+        self.border_bottom.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.border_bottom.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.border_bottom.setObjectName("border_bottom")
+        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
+        self.tabWidget.setGeometry(QtCore.QRect(3, 21, 526, 341))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.tabWidget.setFont(font)
+        self.tabWidget.setStyleSheet("QTabWidget::pane {\n"
+"  border: 1px solid lightgray;\n"
+"  top:-1px; \n"
+"\n"
+"} \n"
+"\n"
+"\n"
+"QTabBar::tab {\n"
+"  background: rgb(230, 230, 230); \n"
+"  border-bottom: 1px solid lightgray; \n"
+"  border-right: 1px solid lightgray; \n"
+"border-top-right-radius:10px;\n"
+"  padding: 4px;\n"
+"} \n"
+"\n"
+"QTabBar::tab:selected { \n"
+"\n"
+"border: 0px solid lightgray;\n"
+"  border-bottom: 3px solid#3A81BD; \n"
+"  background: #00BFF3; \n"
+"  margin-bottom: -1px; \n"
+"color:white;\n"
+"border-right: 2px solid#3A81BD; \n"
+"}\n"
+"\n"
+"QTabBar::tab:hover:selected { \n"
+"  border-bottom: 3px solid#3A81BD; \n"
+"  background:#1bb3dc; \n"
+"  margin-bottom: -1px;\n"
+"color:white;\n"
+"}\n"
+"QTabBar::tab:hover:!selected { \n"
+"  border-bottom: 3px solid#656565; \n"
+"  background:#f5f5f5; \n"
+"  margin-bottom: -1px;\n"
+"color:black;\n"
+"}\n"
+"QTabBar::tab:pressed:!selected { \n"
+"  border-bottom: 3px solid#656565; \n"
+"  background:/*#cccccc*/#3A81BD; \n"
+"  margin-bottom: -1px; \n"
+"color:white;\n"
+"}\n"
+"QTabBar::tab:pressed:selected { \n"
+"  border-bottom: 3px solid#656565; \n"
+"  background:#3A81BD; \n"
+"  margin-bottom: -1px; \n"
+"color:white;\n"
+"}")
+        self.tabWidget.setElideMode(QtCore.Qt.ElideNone)
+        self.tabWidget.setTabsClosable(False)
+        self.tabWidget.setMovable(False)
+        self.tabWidget.setTabBarAutoHide(True)
+        self.tabWidget.setObjectName("tabWidget")
+        self.Time_Tab = QtWidgets.QWidget()
+        self.Time_Tab.setObjectName("Time_Tab")
+        self.loading = QtWidgets.QLabel(self.Time_Tab)
+        self.loading.setGeometry(QtCore.QRect(370, 112, 91, 21))
+        self.loading.setAlignment(QtCore.Qt.AlignCenter)
+        self.loading.setObjectName("loading")
+        self.input_Comp = QtWidgets.QLineEdit(self.Time_Tab)
+        self.input_Comp.setGeometry(QtCore.QRect(440, 70, 37, 16))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_Comp.sizePolicy().hasHeightForWidth())
+        self.input_Comp.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setBold(True)
+        font.setWeight(75)
+        self.input_Comp.setFont(font)
+        self.input_Comp.setAutoFillBackground(False)
+        self.input_Comp.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_Comp.setText("")
+        self.input_Comp.setClearButtonEnabled(False)
+        self.input_Comp.setObjectName("input_Comp")
+        self.label_Er = QtWidgets.QLabel(self.Time_Tab)
+        self.label_Er.setEnabled(True)
+        self.label_Er.setGeometry(QtCore.QRect(330, 97, 171, 16))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_Er.setFont(font)
+        self.label_Er.setStyleSheet("color: rgb(255, 0, 0);")
+        self.label_Er.setObjectName("label_Er")
+        self.SpeedTest_PB = QtWidgets.QPushButton(self.Time_Tab)
+        self.SpeedTest_PB.setGeometry(QtCore.QRect(300, 11, 51, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.SpeedTest_PB.setFont(font)
+        self.SpeedTest_PB.setStyleSheet("#SpeedTest_PB {\n"
+"font: 87 8pt \"Arca Majora 3 Bold\";\n"
+"background: #ffffff;\n"
+"border-radius: 0px;\n"
+"border: 0.75px solid #656565;\n"
+"color:black;\n"
+"}\n"
+"#SpeedTest_PB:hover\n"
+"{\n"
+"border: 1.25px solid #00BFF3;\n"
+"color:#00bff3\n"
+"}\n"
+"#SpeedTest_PB:pressed\n"
+"{\n"
+" border: 1.25px solid #656565;\n"
+"color:black;\n"
+"}")
+        self.SpeedTest_PB.setObjectName("SpeedTest_PB")
+        self.label_Perc = QtWidgets.QLabel(self.Time_Tab)
+        self.label_Perc.setGeometry(QtCore.QRect(480, 70, 21, 18))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_Perc.setFont(font)
+        self.label_Perc.setObjectName("label_Perc")
+        self.input_Si = QtWidgets.QLineEdit(self.Time_Tab)
+        self.input_Si.setGeometry(QtCore.QRect(160, 71, 133, 20))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_Si.sizePolicy().hasHeightForWidth())
+        self.input_Si.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setBold(True)
+        font.setWeight(75)
+        self.input_Si.setFont(font)
+        self.input_Si.setAutoFillBackground(False)
+        self.input_Si.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_Si.setCursorMoveStyle(QtCore.Qt.LogicalMoveStyle)
+        self.input_Si.setClearButtonEnabled(True)
+        self.input_Si.setObjectName("input_Si")
+        self.Start_PB = QtWidgets.QPushButton(self.Time_Tab)
+        self.Start_PB.setGeometry(QtCore.QRect(370, 10, 141, 51))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
         font.setPointSize(14)
@@ -68,87 +348,8 @@ class Ui_MainWindow(object):
 "color:black;\n"
 "}")
         self.Start_PB.setObjectName("Start_PB")
-        self.input_AvSp = QtWidgets.QLineEdit(self.centralwidget)
-        self.input_AvSp.setGeometry(QtCore.QRect(159, 51, 133, 20))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_AvSp.sizePolicy().hasHeightForWidth())
-        self.input_AvSp.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Bold")
-        font.setBold(True)
-        font.setWeight(75)
-        self.input_AvSp.setFont(font)
-        self.input_AvSp.setAutoFillBackground(False)
-        self.input_AvSp.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.input_AvSp.setClearButtonEnabled(True)
-        self.input_AvSp.setObjectName("input_AvSp")
-        self.go_to_Data_PB = QtWidgets.QPushButton(self.centralwidget)
-        self.go_to_Data_PB.setGeometry(QtCore.QRect(3, 100, 66, 66))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.go_to_Data_PB.sizePolicy().hasHeightForWidth())
-        self.go_to_Data_PB.setSizePolicy(sizePolicy)
-        self.go_to_Data_PB.setAutoFillBackground(False)
-        self.go_to_Data_PB.setStyleSheet("#go_to_Data_PB {\n"
-"background-color: transparent;\n"
-"border-image: url(:/go_to_Data/Files/Buttons/go_to_Data/Normal.png);\n"
-"background: none;\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"}\n"
-"#go_to_Data_PB:hover\n"
-"{\n"
-"border-image: url(:/go_to_Data/Files/Buttons/go_to_Data/Highlight.png);\n"
-"    color:#00bff3\n"
-"}\n"
-"#go_to_Data_PB:pressed\n"
-"{\n"
-"border-image: url(:/go_to_Data/Files/Buttons/go_to_Data/Pressed.png);\n"
-"    color:black\n"
-"}")
-        self.go_to_Data_PB.setText("")
-        self.go_to_Data_PB.setIconSize(QtCore.QSize(66, 66))
-        self.go_to_Data_PB.setObjectName("go_to_Data_PB")
-        self.label_AvSp = QtWidgets.QLabel(self.centralwidget)
-        self.label_AvSp.setGeometry(QtCore.QRect(41, 51, 112, 18))
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Bold")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_AvSp.setFont(font)
-        self.label_AvSp.setObjectName("label_AvSp")
-        self.input_Si = QtWidgets.QLineEdit(self.centralwidget)
-        self.input_Si.setGeometry(QtCore.QRect(160, 111, 133, 20))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_Si.sizePolicy().hasHeightForWidth())
-        self.input_Si.setSizePolicy(sizePolicy)
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Bold")
-        font.setBold(True)
-        font.setWeight(75)
-        self.input_Si.setFont(font)
-        self.input_Si.setAutoFillBackground(False)
-        self.input_Si.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.input_Si.setCursorMoveStyle(QtCore.Qt.LogicalMoveStyle)
-        self.input_Si.setClearButtonEnabled(True)
-        self.input_Si.setObjectName("input_Si")
-        self.label_Si = QtWidgets.QLabel(self.centralwidget)
-        self.label_Si.setGeometry(QtCore.QRect(120, 111, 29, 18))
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Bold")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_Si.setFont(font)
-        self.label_Si.setObjectName("label_Si")
-        self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget.setGeometry(QtCore.QRect(130, 141, 171, 23))
+        self.layoutWidget = QtWidgets.QWidget(self.Time_Tab)
+        self.layoutWidget.setGeometry(QtCore.QRect(130, 101, 171, 23))
         self.layoutWidget.setObjectName("layoutWidget")
         self.RB_Si = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.RB_Si.setContentsMargins(0, 0, 0, 0)
@@ -182,34 +383,60 @@ class Ui_MainWindow(object):
         self.RB_TB.setFont(font)
         self.RB_TB.setObjectName("RB_TB")
         self.RB_Si.addWidget(self.RB_TB)
-        self.input_Comp = QtWidgets.QLineEdit(self.centralwidget)
-        self.input_Comp.setGeometry(QtCore.QRect(440, 110, 37, 16))
+        self.SizeBrowse_PB = QtWidgets.QPushButton(self.Time_Tab)
+        self.SizeBrowse_PB.setGeometry(QtCore.QRect(300, 70, 21, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.SizeBrowse_PB.setFont(font)
+        self.SizeBrowse_PB.setStyleSheet("#SizeBrowse_PB {\n"
+"font: 87 8pt \"Arca Majora 3 Bold\";\n"
+"background: #ffffff;\n"
+"border-radius: 0px;\n"
+"border: 0.75px solid #656565;\n"
+"color:black;\n"
+"}\n"
+"#SizeBrowse_PB:hover\n"
+"{\n"
+"border: 1.25px solid #00BFF3;\n"
+"color:#00bff3\n"
+"}\n"
+"#SizeBrowse_PB:pressed\n"
+"{\n"
+" border: 1.25px solid #656565;\n"
+"color:black;\n"
+"}")
+        self.SizeBrowse_PB.setObjectName("SizeBrowse_PB")
+        self.input_AvSp = QtWidgets.QLineEdit(self.Time_Tab)
+        self.input_AvSp.setGeometry(QtCore.QRect(159, 11, 133, 20))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.input_Comp.sizePolicy().hasHeightForWidth())
-        self.input_Comp.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.input_AvSp.sizePolicy().hasHeightForWidth())
+        self.input_AvSp.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
         font.setBold(True)
         font.setWeight(75)
-        self.input_Comp.setFont(font)
-        self.input_Comp.setAutoFillBackground(False)
-        self.input_Comp.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.input_Comp.setText("")
-        self.input_Comp.setClearButtonEnabled(False)
-        self.input_Comp.setObjectName("input_Comp")
-        self.label_Perc = QtWidgets.QLabel(self.centralwidget)
-        self.label_Perc.setGeometry(QtCore.QRect(480, 110, 21, 18))
+        self.input_AvSp.setFont(font)
+        self.input_AvSp.setAutoFillBackground(False)
+        self.input_AvSp.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_AvSp.setClearButtonEnabled(True)
+        self.input_AvSp.setObjectName("input_AvSp")
+        self.label_Comp = QtWidgets.QLabel(self.Time_Tab)
+        self.label_Comp.setGeometry(QtCore.QRect(350, 70, 81, 18))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.label_Perc.setFont(font)
-        self.label_Perc.setObjectName("label_Perc")
-        self.layoutWidget1 = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget1.setGeometry(QtCore.QRect(130, 80, 175, 23))
+        self.label_Comp.setFont(font)
+        self.label_Comp.setObjectName("label_Comp")
+        self.layoutWidget1 = QtWidgets.QWidget(self.Time_Tab)
+        self.layoutWidget1.setGeometry(QtCore.QRect(130, 40, 175, 23))
         self.layoutWidget1.setObjectName("layoutWidget1")
         self.RB_AvSp = QtWidgets.QHBoxLayout(self.layoutWidget1)
         self.RB_AvSp.setContentsMargins(0, 0, 0, 0)
@@ -245,105 +472,17 @@ class Ui_MainWindow(object):
         self.RB_Mbs.raise_()
         self.RB_KBs.raise_()
         self.RB_MBs.raise_()
-        self.Top = QtWidgets.QFrame(self.centralwidget)
-        self.Top.setGeometry(QtCore.QRect(0, 0, 541, 21))
-        self.Top.setMouseTracking(True)
-        self.Top.setStyleSheet("background-color: rgb(0, 0, 0);")
-        self.Top.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.Top.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.Top.setObjectName("Top")
-        self.win_title = QtWidgets.QLabel(self.Top)
-        self.win_title.setGeometry(QtCore.QRect(6, 2, 191, 21))
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Heavy")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.win_title.setFont(font)
-        self.win_title.setStyleSheet("color: rgb(255, 255, 255);")
-        self.win_title.setScaledContents(True)
-        self.win_title.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.win_title.setOpenExternalLinks(False)
-        self.win_title.setTextInteractionFlags(QtCore.Qt.NoTextInteraction)
-        self.win_title.setObjectName("win_title")
-        self.cls_PB = QtWidgets.QPushButton(self.Top)
-        self.cls_PB.setGeometry(QtCore.QRect(513, 2, 16, 16))
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Heavy")
-        font.setPointSize(11)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(10)
-        self.cls_PB.setFont(font)
-        self.cls_PB.setStyleSheet("#cls_PB {\n"
-"background-color:#B70F0F;\n"
-"border: none;\n"
-"background-repeat: none;\n"
-"color: rgb(255, 255, 255);\n"
-"font: 87 11pt \"Arca Majora 3 Heavy\";\n"
-"border-radius: 4px;\n"
-"}\n"
-"#cls_PB:hover\n"
-"{\n"
-"background-color:rgb(229, 0, 4);\n"
-"}\n"
-"#cls_PB:pressed\n"
-"{\n"
-"background-color: rgb(160, 0, 0);\n"
-"}")
-        self.cls_PB.setObjectName("cls_PB")
-        self.label_Comp = QtWidgets.QLabel(self.centralwidget)
-        self.label_Comp.setGeometry(QtCore.QRect(350, 110, 81, 18))
+        self.label_AvSp = QtWidgets.QLabel(self.Time_Tab)
+        self.label_AvSp.setGeometry(QtCore.QRect(41, 11, 112, 18))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.label_Comp.setFont(font)
-        self.label_Comp.setObjectName("label_Comp")
-        self.border_left = QtWidgets.QFrame(self.centralwidget)
-        self.border_left.setEnabled(False)
-        self.border_left.setGeometry(QtCore.QRect(0, 0, 3, 300))
-        self.border_left.setStatusTip("")
-        self.border_left.setAccessibleName("")
-        self.border_left.setAccessibleDescription("")
-        self.border_left.setStyleSheet("border: 3px solid black;")
-        self.border_left.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.border_left.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.border_left.setObjectName("border_left")
-        self.border_right = QtWidgets.QFrame(self.centralwidget)
-        self.border_right.setEnabled(False)
-        self.border_right.setGeometry(QtCore.QRect(529, 0, 3, 300))
-        self.border_right.setStatusTip("")
-        self.border_right.setAccessibleName("")
-        self.border_right.setAccessibleDescription("")
-        self.border_right.setStyleSheet("border: 3px solid black;")
-        self.border_right.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.border_right.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.border_right.setObjectName("border_right")
-        self.border_bottom = QtWidgets.QFrame(self.centralwidget)
-        self.border_bottom.setEnabled(False)
-        self.border_bottom.setGeometry(QtCore.QRect(0, 187, 532, 3))
-        self.border_bottom.setStatusTip("")
-        self.border_bottom.setAccessibleName("")
-        self.border_bottom.setAccessibleDescription("")
-        self.border_bottom.setStyleSheet("border: 3px solid black;")
-        self.border_bottom.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.border_bottom.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.border_bottom.setObjectName("border_bottom")
-        self.label_Er = QtWidgets.QLabel(self.centralwidget)
-        self.label_Er.setEnabled(True)
-        self.label_Er.setGeometry(QtCore.QRect(330, 140, 171, 16))
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Bold")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_Er.setFont(font)
-        self.label_Er.setStyleSheet("color: rgb(255, 0, 0);")
-        self.label_Er.setObjectName("label_Er")
-        self.label_Result = QtWidgets.QLabel(self.centralwidget)
-        self.label_Result.setGeometry(QtCore.QRect(0, 182, 517, 31))
+        self.label_AvSp.setFont(font)
+        self.label_AvSp.setObjectName("label_AvSp")
+        self.label_Result = QtWidgets.QLabel(self.Time_Tab)
+        self.label_Result.setGeometry(QtCore.QRect(10, 140, 511, 31))
         self.label_Result.setMinimumSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
@@ -355,90 +494,1145 @@ class Ui_MainWindow(object):
 "")
         self.label_Result.setAlignment(QtCore.Qt.AlignCenter)
         self.label_Result.setObjectName("label_Result")
-        self.SpeedTest_PB = QtWidgets.QPushButton(self.centralwidget)
-        self.SpeedTest_PB.setGeometry(QtCore.QRect(300, 51, 51, 20))
+        self.label_Si = QtWidgets.QLabel(self.Time_Tab)
+        self.label_Si.setGeometry(QtCore.QRect(120, 71, 29, 18))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
-        font.setPointSize(9)
+        font.setPointSize(11)
         font.setBold(True)
-        font.setItalic(False)
         font.setWeight(75)
-        self.SpeedTest_PB.setFont(font)
-        self.SpeedTest_PB.setStyleSheet("#SpeedTest_PB {\n"
+        self.label_Si.setFont(font)
+        self.label_Si.setObjectName("label_Si")
+        self.DMW_label = QtWidgets.QLabel(self.Time_Tab)
+        self.DMW_label.setGeometry(QtCore.QRect(0, 190, 101, 16))
+        self.DMW_label.setObjectName("DMW_label")
+        self.tabWidget.addTab(self.Time_Tab, "")
+        self.Data_Tab = QtWidgets.QWidget()
+        self.Data_Tab.setObjectName("Data_Tab")
+        self.StartD_PB = QtWidgets.QPushButton(self.Data_Tab)
+        self.StartD_PB.setGeometry(QtCore.QRect(370, 10, 141, 51))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.StartD_PB.setFont(font)
+        self.StartD_PB.setStyleSheet("#StartD_PB {\n"
 "background: #ffffff;\n"
 "border-radius: 0px;\n"
+"border: 3px solid #656565;\n"
+"color:black;\n"
+"}\n"
+"#StartD_PB:hover\n"
+"{\n"
+"border: 5px solid #00BFF3;\n"
+"color:#00bff3\n"
+"}\n"
+"#StartD_PB:pressed\n"
+"{\n"
+" border: 5px solid #656565;\n"
+"color:black;\n"
+"}")
+        self.StartD_PB.setObjectName("StartD_PB")
+        self.label_Time_head = QtWidgets.QLabel(self.Data_Tab)
+        self.label_Time_head.setGeometry(QtCore.QRect(42, 50, 61, 20))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Heavy")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(True)
+        font.setWeight(10)
+        self.label_Time_head.setFont(font)
+        self.label_Time_head.setStyleSheet("font: 87 11pt \"Arca Majora 3 Heavy\";\n"
+"text-decoration: underline;")
+        self.label_Time_head.setObjectName("label_Time_head")
+        self.label_AvSpD = QtWidgets.QLabel(self.Data_Tab)
+        self.label_AvSpD.setGeometry(QtCore.QRect(42, 20, 51, 18))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_AvSpD.setFont(font)
+        self.label_AvSpD.setObjectName("label_AvSpD")
+        self.input_AvSpD = QtWidgets.QLineEdit(self.Data_Tab)
+        self.input_AvSpD.setGeometry(QtCore.QRect(100, 20, 151, 20))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.input_AvSpD.sizePolicy().hasHeightForWidth())
+        self.input_AvSpD.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setBold(True)
+        font.setWeight(75)
+        self.input_AvSpD.setFont(font)
+        self.input_AvSpD.setAutoFillBackground(False)
+        self.input_AvSpD.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.input_AvSpD.setClearButtonEnabled(True)
+        self.input_AvSpD.setObjectName("input_AvSpD")
+        self.SPcomboBox = QtWidgets.QComboBox(self.Data_Tab)
+        self.SPcomboBox.setGeometry(QtCore.QRect(260, 20, 69, 22))
+        self.SPcomboBox.setStyleSheet("QComboBox::drop-down:button{color:black; border-radius:5px; background:white;}\n"
+"QComboBox::down-arrow:normal{image: url(:/dropDown/Files/Buttons/dropDown/dropdown.png)}\n"
+"QComboBox::down-arrow:hover{image: url(:/dropDown/Files/Buttons/dropDown/dropDown-hover.png)}\n"
+"\n"
+"#SPcomboBox {\n"
+"font: 75 8pt \"Arca Majora 3 Bold\";\n"
+"background: #ffffff;\n"
+"border-radius: 1px;\n"
 "border: 1.5px solid #656565;\n"
 "color:black;\n"
 "}\n"
-"#SpeedTest_PB:hover\n"
+"#SPcomboBox:hover\n"
 "{\n"
-"border: 2.5px solid #00BFF3;\n"
-"color:#00bff3\n"
+"color:#00bff3;\n"
+"border: 1.5px solid #00BFF3;\n"
 "}\n"
-"#SpeedTest_PB:pressed\n"
+"#SPcomboBox:pressed\n"
 "{\n"
-" border: 2.5px solid #656565;\n"
 "color:black;\n"
-"}")
-        self.SpeedTest_PB.setObjectName("SpeedTest_PB")
-        self.SizeBrowse_PB = QtWidgets.QPushButton(self.centralwidget)
-        self.SizeBrowse_PB.setGeometry(QtCore.QRect(300, 110, 21, 20))
+"}\n"
+"")
+        self.SPcomboBox.setObjectName("SPcomboBox")
+        self.SPcomboBox.addItem("")
+        self.SPcomboBox.addItem("")
+        self.SPcomboBox.addItem("")
+        self.layoutWidget2 = QtWidgets.QWidget(self.Data_Tab)
+        self.layoutWidget2.setGeometry(QtCore.QRect(40, 80, 442, 51))
+        self.layoutWidget2.setObjectName("layoutWidget2")
+        self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget2)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label_seconds = QtWidgets.QLabel(self.layoutWidget2)
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
-        font.setPointSize(9)
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_seconds.setFont(font)
+        self.label_seconds.setObjectName("label_seconds")
+        self.gridLayout.addWidget(self.label_seconds, 0, 0, 1, 1)
+        self.label_hours = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_hours.setFont(font)
+        self.label_hours.setObjectName("label_hours")
+        self.gridLayout.addWidget(self.label_hours, 0, 2, 1, 1)
+        self.spinHours = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinHours.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinHours.setMaximum(23)
+        self.spinHours.setObjectName("spinHours")
+        self.gridLayout.addWidget(self.spinHours, 0, 3, 1, 1)
+        self.label_months = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_months.setFont(font)
+        self.label_months.setObjectName("label_months")
+        self.gridLayout.addWidget(self.label_months, 0, 4, 1, 1)
+        self.spinMonths = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinMonths.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinMonths.setMaximum(11)
+        self.spinMonths.setObjectName("spinMonths")
+        self.gridLayout.addWidget(self.spinMonths, 0, 5, 1, 1)
+        self.label_decades = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_decades.setFont(font)
+        self.label_decades.setObjectName("label_decades")
+        self.gridLayout.addWidget(self.label_decades, 0, 6, 1, 1)
+        self.spinDecades = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinDecades.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinDecades.setMaximum(9)
+        self.spinDecades.setObjectName("spinDecades")
+        self.gridLayout.addWidget(self.spinDecades, 0, 7, 1, 1)
+        self.label_minutes = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_minutes.setFont(font)
+        self.label_minutes.setObjectName("label_minutes")
+        self.gridLayout.addWidget(self.label_minutes, 1, 0, 1, 1)
+        self.spinMinutes = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinMinutes.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinMinutes.setMaximum(59)
+        self.spinMinutes.setObjectName("spinMinutes")
+        self.gridLayout.addWidget(self.spinMinutes, 1, 1, 1, 1)
+        self.label_days = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_days.setFont(font)
+        self.label_days.setObjectName("label_days")
+        self.gridLayout.addWidget(self.label_days, 1, 2, 1, 1)
+        self.spinDays = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinDays.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinDays.setMaximum(30)
+        self.spinDays.setObjectName("spinDays")
+        self.gridLayout.addWidget(self.spinDays, 1, 3, 1, 1)
+        self.label_years = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_years.setFont(font)
+        self.label_years.setObjectName("label_years")
+        self.gridLayout.addWidget(self.label_years, 1, 4, 1, 1)
+        self.spinYears = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinYears.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinYears.setMaximum(99)
+        self.spinYears.setObjectName("spinYears")
+        self.gridLayout.addWidget(self.spinYears, 1, 5, 1, 1)
+        self.label_centuries = QtWidgets.QLabel(self.layoutWidget2)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_centuries.setFont(font)
+        self.label_centuries.setObjectName("label_centuries")
+        self.gridLayout.addWidget(self.label_centuries, 1, 6, 1, 1)
+        self.spinCenturies = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinCenturies.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinCenturies.setMaximum(999999999)
+        self.spinCenturies.setObjectName("spinCenturies")
+        self.gridLayout.addWidget(self.spinCenturies, 1, 7, 1, 1)
+        self.spinSeconds = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.spinSeconds.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.spinSeconds.setMaximum(59)
+        self.spinSeconds.setObjectName("spinSeconds")
+        self.gridLayout.addWidget(self.spinSeconds, 0, 1, 1, 1)
+        self.label_ResultD = QtWidgets.QLabel(self.Data_Tab)
+        self.label_ResultD.setGeometry(QtCore.QRect(10, 140, 511, 31))
+        self.label_ResultD.setMinimumSize(QtCore.QSize(0, 0))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_ResultD.setFont(font)
+        self.label_ResultD.setStyleSheet("color: rgb(19, 125, 37);\n"
+"")
+        self.label_ResultD.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_ResultD.setObjectName("label_ResultD")
+        self.ResetD_PB = QtWidgets.QPushButton(self.Data_Tab)
+        self.ResetD_PB.setGeometry(QtCore.QRect(90, 50, 51, 16))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.ResetD_PB.setFont(font)
+        self.ResetD_PB.setStyleSheet("\n"
+"#ResetD_PB {\n"
+"font: 87 8pt \"Arca Majora 3 Bold\";\n"
+"background: #ffffff;\n"
+"border-radius: 0px;\n"
+"border: 0.75px solid #656565;\n"
+"color:black;\n"
+"}\n"
+"#ResetD_PB:hover\n"
+"{\n"
+"border: 1.25px solid #00BFF3;\n"
+"color:#00bff3\n"
+"}\n"
+"#ResetD_PB:pressed\n"
+"{\n"
+" border: 1.25px solid #656565;\n"
+"color:black;\n"
+"}")
+        self.ResetD_PB.setObjectName("ResetD_PB")
+        self.tabWidget.addTab(self.Data_Tab, "")
+        self.Settings_Tab = QtWidgets.QWidget()
+        self.Settings_Tab.setObjectName("Settings_Tab")
+        self.Save_PB = QtWidgets.QPushButton(self.Settings_Tab)
+        self.Save_PB.setGeometry(QtCore.QRect(310, 110, 81, 21))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(8)
         font.setBold(True)
         font.setItalic(False)
         font.setWeight(75)
-        self.SizeBrowse_PB.setFont(font)
-        self.SizeBrowse_PB.setStyleSheet("#SizeBrowse_PB {\n"
+        self.Save_PB.setFont(font)
+        self.Save_PB.setStyleSheet("#Save_PB {\n"
 "background: #ffffff;\n"
 "border-radius: 0px;\n"
-"border: 1.5px solid #656565;\n"
+"border: 0.75px solid #656565;\n"
 "color:black;\n"
 "}\n"
-"#SizeBrowse_PB:hover\n"
+"#Save_PB:hover\n"
 "{\n"
-"border: 2.5px solid #00BFF3;\n"
+"border: 1.25px solid #00BFF3;\n"
 "color:#00bff3\n"
 "}\n"
-"#SizeBrowse_PB:pressed\n"
+"#Save_PB:pressed\n"
 "{\n"
-" border: 2.5px solid #656565;\n"
+" border: 1.25px solid #656565;\n"
 "color:black;\n"
 "}")
-        self.SizeBrowse_PB.setObjectName("SizeBrowse_PB")
-        self.loading = QtWidgets.QLabel(self.centralwidget)
-        self.loading.setGeometry(QtCore.QRect(370, 160, 91, 21))
-        self.loading.setAlignment(QtCore.Qt.AlignCenter)
-        self.loading.setObjectName("loading")
+        self.Save_PB.setObjectName("Save_PB")
+        self.layoutWidget3 = QtWidgets.QWidget(self.Settings_Tab)
+        self.layoutWidget3.setGeometry(QtCore.QRect(10, 10, 241, 123))
+        self.layoutWidget3.setObjectName("layoutWidget3")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget3)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.SoT_check = QtWidgets.QCheckBox(self.layoutWidget3)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.SoT_check.setFont(font)
+        self.SoT_check.setObjectName("SoT_check")
+        self.verticalLayout.addWidget(self.SoT_check)
+        self.DM_check = QtWidgets.QCheckBox(self.layoutWidget3)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.DM_check.setFont(font)
+        self.DM_check.setObjectName("DM_check")
+        self.verticalLayout.addWidget(self.DM_check)
+        self.resMsgBox_check = QtWidgets.QCheckBox(self.layoutWidget3)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.resMsgBox_check.setFont(font)
+        self.resMsgBox_check.setObjectName("resMsgBox_check")
+        self.verticalLayout.addWidget(self.resMsgBox_check)
+        self.resetFields_check = QtWidgets.QCheckBox(self.layoutWidget3)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.resetFields_check.setFont(font)
+        self.resetFields_check.setObjectName("resetFields_check")
+        self.verticalLayout.addWidget(self.resetFields_check)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_AvSp_3 = QtWidgets.QLabel(self.layoutWidget3)
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_AvSp_3.setFont(font)
+        self.label_AvSp_3.setObjectName("label_AvSp_3")
+        self.horizontalLayout.addWidget(self.label_AvSp_3)
+        self.scaleSpin = QtWidgets.QSpinBox(self.layoutWidget3)
+        self.scaleSpin.setStyleSheet("QSpinBox::up-arrow{\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:focus {\n"
+"    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);\n"
+"}\n"
+"\n"
+"QSpinBox{\n"
+"    color: #6e6e6e;\n"
+"    background-color: #e0e0e0;\n"
+"    selection-color: white;\n"
+"    selection-background-color: #2255bf;\n"
+"    border: 1px solid #e0e0e0;\n"
+"    border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:focus {\n"
+"    color: black;\n"
+"    border-color: #7cabf9;\n"
+"    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);\n"
+"    background-color: #cbd8e6;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button,\n"
+"QSpinBox:down-button{\n"
+"    background-color: #d2d2d2;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button{\n"
+"    border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:down-button {\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox:up-button:focus{\n"
+"    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"\n"
+"QSpinBox:down-button:focus{\n"
+"    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow:pressed{\n"
+"background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow:pressed{\n"
+"background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));\n"
+"border-top-right-radius: 3px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.scaleSpin.setMinimum(1)
+        self.scaleSpin.setMaximum(4)
+        self.scaleSpin.setObjectName("scaleSpin")
+        self.horizontalLayout.addWidget(self.scaleSpin)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.Restart_label = QtWidgets.QLabel(self.layoutWidget3)
+        font = QtGui.QFont()
+        font.setUnderline(True)
+        self.Restart_label.setFont(font)
+        self.Restart_label.setStyleSheet("color:rgb(255, 0, 0);")
+        self.Restart_label.setObjectName("Restart_label")
+        self.verticalLayout.addWidget(self.Restart_label)
+        self.border_center = QtWidgets.QFrame(self.Settings_Tab)
+        self.border_center.setEnabled(False)
+        self.border_center.setGeometry(QtCore.QRect(260, 9, 1, 127))
+        self.border_center.setStatusTip("")
+        self.border_center.setAccessibleName("")
+        self.border_center.setAccessibleDescription("")
+        self.border_center.setStyleSheet("border: 1px dashed gray;")
+        self.border_center.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.border_center.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.border_center.setObjectName("border_center")
+        self.Icon_image = QtWidgets.QLabel(self.Settings_Tab)
+        self.Icon_image.setGeometry(QtCore.QRect(280, 20, 64, 64))
+        self.Icon_image.setText("")
+        self.Icon_image.setTextFormat(QtCore.Qt.PlainText)
+        self.Icon_image.setPixmap(QtGui.QPixmap(":/Icon/Files/Icon/TimeES icon.png"))
+        self.Icon_image.setScaledContents(True)
+        self.Icon_image.setObjectName("Icon_image")
+        self.label_About1 = QtWidgets.QLabel(self.Settings_Tab)
+        self.label_About1.setGeometry(QtCore.QRect(360, 20, 151, 18))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Heavy")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.label_About1.setFont(font)
+        self.label_About1.setObjectName("label_About1")
+        self.label_About2 = QtWidgets.QLabel(self.Settings_Tab)
+        self.label_About2.setGeometry(QtCore.QRect(360, 40, 151, 18))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.label_About2.setFont(font)
+        self.label_About2.setObjectName("label_About2")
+        self.label_About3 = QtWidgets.QLabel(self.Settings_Tab)
+        self.label_About3.setGeometry(QtCore.QRect(360, 70, 81, 18))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Heavy")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(True)
+        font.setWeight(10)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.label_About3.setFont(font)
+        self.label_About3.setStyleSheet("color:#1f8fed;\n"
+"font: 87 8pt \"Arca Majora 3 Heavy\";\n"
+"text-decoration: underline;")
+        self.label_About3.setObjectName("label_About3")
+        self.Update_PB = QtWidgets.QPushButton(self.Settings_Tab)
+        self.Update_PB.setGeometry(QtCore.QRect(400, 110, 111, 21))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.Update_PB.setFont(font)
+        self.Update_PB.setStyleSheet("\n"
+"#Update_PB {\n"
+"font: 87 8pt \"Arca Majora 3 Bold\";\n"
+"background: #ffffff;\n"
+"border-radius: 0px;\n"
+"border: 0.75px solid #656565;\n"
+"color:black;\n"
+"}\n"
+"#Update_PB:hover\n"
+"{\n"
+"border: 1.25px solid #00BFF3;\n"
+"color:#00bff3\n"
+"}\n"
+"#Update_PB:pressed\n"
+"{\n"
+" border: 1.25px solid #656565;\n"
+"color:black;\n"
+"}")
+        self.Update_PB.setObjectName("Update_PB")
+        self.tabWidget.addTab(self.Settings_Tab, "")
+        self.infoPage = QtWidgets.QWidget()
+        self.infoPage.setObjectName("infoPage")
+        self.textBrowser = QtWidgets.QTextBrowser(self.infoPage)
+        self.textBrowser.setGeometry(QtCore.QRect(0, 0, 524, 141))
+        self.textBrowser.setStyleSheet("QScrollBar:vertical {\n"
+"  background: palette(base);\n"
+"  border-top-right-radius: 2px;\n"
+"  border-bottom-right-radius: 2px;\n"
+"  width: 16px;\n"
+"  margin: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"  background-color: palette(midlight);\n"
+"  border-radius: 2px;\n"
+"  min-height: 20px;\n"
+"  margin: 2px 4px 2px 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover, QScrollBar::handle:vertical:pressed, QScrollBar::handle:horizontal:pressed {\n"
+"  background-color:palette(highlight);\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical {\n"
+"  background: none;\n"
+"  height: 0px;\n"
+"  subcontrol-position: right;\n"
+"  subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"  background: none;\n"
+"  height: 0px;\n"
+"  subcontrol-position: left;\n"
+"  subcontrol-origin: margin;\n"
+"}\n"
+"")
+        self.textBrowser.setObjectName("textBrowser")
+        self.tabWidget.addTab(self.infoPage, "")
+        self.tabWidget.raise_()
         self.border_left.raise_()
         self.Top.raise_()
-        self.Start_PB.raise_()
-        self.input_AvSp.raise_()
-        self.go_to_Data_PB.raise_()
-        self.label_AvSp.raise_()
-        self.input_Si.raise_()
-        self.label_Si.raise_()
-        self.layoutWidget.raise_()
-        self.input_Comp.raise_()
-        self.label_Perc.raise_()
-        self.layoutWidget.raise_()
-        self.label_Comp.raise_()
         self.border_right.raise_()
         self.border_bottom.raise_()
-        self.label_Er.raise_()
-        self.label_Result.raise_()
-        self.SpeedTest_PB.raise_()
-        self.SizeBrowse_PB.raise_()
-        self.loading.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
-        self.label_AvSp.setBuddy(self.input_AvSp)
-        self.label_Si.setBuddy(self.input_Si)
-        self.label_Comp.setBuddy(self.input_Comp)
         self.label_Er.setBuddy(self.input_AvSp)
+        self.label_Comp.setBuddy(self.input_Comp)
+        self.label_AvSp.setBuddy(self.input_AvSp)
         self.label_Result.setBuddy(self.input_Si)
+        self.label_Si.setBuddy(self.input_Si)
+        self.label_Time_head.setBuddy(self.input_Si)
+        self.label_AvSpD.setBuddy(self.input_AvSp)
+        self.label_seconds.setBuddy(self.input_Si)
+        self.label_hours.setBuddy(self.input_Si)
+        self.label_months.setBuddy(self.input_Si)
+        self.label_decades.setBuddy(self.input_Si)
+        self.label_minutes.setBuddy(self.input_Si)
+        self.label_days.setBuddy(self.input_Si)
+        self.label_years.setBuddy(self.input_Si)
+        self.label_centuries.setBuddy(self.input_Si)
+        self.label_ResultD.setBuddy(self.input_Si)
+        self.label_AvSp_3.setBuddy(self.input_AvSp)
 
         self.retranslateUi(MainWindow)
+        self.tabWidget.setCurrentIndex(2)
+        self.SPcomboBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.input_AvSp, self.input_Si)
         MainWindow.setTabOrder(self.input_Si, self.RB_KBs)
@@ -449,53 +1643,164 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.RB_GB, self.RB_TB)
         MainWindow.setTabOrder(self.RB_TB, self.input_Comp)
         MainWindow.setTabOrder(self.input_Comp, self.Start_PB)
-        MainWindow.setTabOrder(self.Start_PB, self.go_to_Data_PB)
-        MainWindow.setTabOrder(self.go_to_Data_PB, self.cls_PB)
+        MainWindow.setTabOrder(self.Start_PB, self.cls_PB)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Time Estimator v5.0 Alpha"))
-        self.Start_PB.setToolTip(_translate("MainWindow", "<html><head/><body><p>Start Calculation</p></body></html>"))
+        self.win_title.setText(_translate("MainWindow", "Estimator V5.0 Beta"))
+        self.cls_PB.setText(_translate("MainWindow", "x"))
+        self.mini_PB.setText(_translate("MainWindow", "-"))
+        self.loading.setText(_translate("MainWindow", "TextLabel"))
+        self.input_Comp.setToolTip(_translate("MainWindow", "<html><head/><body><p>Enter how much of the transfer is already done</p></body></html>"))
+        self.label_Er.setToolTip(_translate("MainWindow", "<html><head/><body><p>Please recheck the highlighted values (red)</p></body></html>"))
+        self.label_Er.setText(_translate("MainWindow", "Provide correct values!"))
+        self.SpeedTest_PB.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:8pt; font-weight:80; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Test the average transfer speed of a disk that of the internet</span></p></body></html>"))
+        self.SpeedTest_PB.setText(_translate("MainWindow", "Test"))
+        self.label_Perc.setText(_translate("MainWindow", "%"))
+        self.input_Si.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:8pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Enter the file/folder size</span></p></body></html>"))
+        self.Start_PB.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:14pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Start Calculation</span></p></body></html>"))
         self.Start_PB.setText(_translate("MainWindow", "START"))
-        self.input_AvSp.setToolTip(_translate("MainWindow", "<html><head/><body><p>Enter the average transfer speed</p></body></html>"))
-        self.go_to_Data_PB.setToolTip(_translate("MainWindow", "<html><head/><body><p>Go to data estimator</p></body></html>"))
-        self.label_AvSp.setToolTip(_translate("MainWindow", "<html><head/><body><p>The average transfer speed</p></body></html>"))
-        self.label_AvSp.setText(_translate("MainWindow", "Average Speed"))
-        self.input_Si.setToolTip(_translate("MainWindow", "<html><head/><body><p>Enter the file/folder size</p></body></html>"))
-        self.label_Si.setToolTip(_translate("MainWindow", "<html><head/><body><p>The file/folder size</p></body></html>"))
-        self.label_Si.setText(_translate("MainWindow", "Size"))
-        self.RB_MB.setToolTip(_translate("MainWindow", "<html><head/><body><p>Change Size units to MegaByte</p></body></html>"))
+        self.RB_MB.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Change Size units to MegaByte (1024 KB)</span></p></body></html>"))
         self.RB_MB.setText(_translate("MainWindow", "MB"))
         self.RB_MB.setShortcut(_translate("MainWindow", "K"))
-        self.RB_GB.setToolTip(_translate("MainWindow", "<html><head/><body><p>Change Size units to GigaByte</p></body></html>"))
+        self.RB_GB.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Change Size units to GigaByte (1024 MB)</span></p></body></html>"))
         self.RB_GB.setText(_translate("MainWindow", "GB"))
         self.RB_GB.setShortcut(_translate("MainWindow", "M"))
-        self.RB_TB.setToolTip(_translate("MainWindow", "<html><head/><body><p>Change Size units to TeraByte</p></body></html>"))
+        self.RB_TB.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Change Size units to TeraByte (1024 GB)</span></p></body></html>"))
         self.RB_TB.setText(_translate("MainWindow", "TB"))
         self.RB_TB.setShortcut(_translate("MainWindow", "Shift+M"))
-        self.input_Comp.setToolTip(_translate("MainWindow", "<html><head/><body><p>Enter how much of the transfer is already done</p></body></html>"))
-        self.label_Perc.setText(_translate("MainWindow", "%"))
-        self.RB_KBs.setToolTip(_translate("MainWindow", "<html><head/><body><p>Change Speed units to KiloBytes per second</p></body></html>"))
+        self.SizeBrowse_PB.setText(_translate("MainWindow", "B"))
+        self.input_AvSp.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:8pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The average transfer speed</span></p></body></html>"))
+        self.label_Comp.setToolTip(_translate("MainWindow", "<html><head/><body><p>How much of the transfer is already done</p></body></html>"))
+        self.label_Comp.setText(_translate("MainWindow", "Completed"))
+        self.RB_KBs.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Change Speed units to KiloBytes per second (1024 bytes/s)</span></p></body></html>"))
         self.RB_KBs.setText(_translate("MainWindow", "KB/s"))
         self.RB_KBs.setShortcut(_translate("MainWindow", "K"))
-        self.RB_MBs.setToolTip(_translate("MainWindow", "<html><head/><body><p>Change Speed units to MegaBytes per second</p></body></html>"))
+        self.RB_MBs.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Change Speed units to MegaBytes per second (1024 KB/s)</span></p></body></html>"))
         self.RB_MBs.setText(_translate("MainWindow", "MB/s"))
         self.RB_MBs.setShortcut(_translate("MainWindow", "M"))
-        self.RB_Mbs.setToolTip(_translate("MainWindow", "<html><head/><body><p>Change Speed units to Megabits per second</p></body></html>"))
+        self.RB_Mbs.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:9pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Change Speed units to Megabits per second (Megabit = 1/8 of 1 Megabyte, mostly used to measure internet speed)</span></p></body></html>"))
         self.RB_Mbs.setWhatsThis(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.RB_Mbs.setText(_translate("MainWindow", "Mb/s"))
         self.RB_Mbs.setShortcut(_translate("MainWindow", "Shift+M"))
-        self.win_title.setText(_translate("MainWindow", "Time Estimator V5 Alpha"))
-        self.cls_PB.setText(_translate("MainWindow", "x"))
-        self.label_Comp.setToolTip(_translate("MainWindow", "<html><head/><body><p>How much of the transfer is already done</p></body></html>"))
-        self.label_Comp.setText(_translate("MainWindow", "Completed"))
-        self.label_Er.setToolTip(_translate("MainWindow", "<html><head/><body><p>Please recheck the highlighted values (red)</p></body></html>"))
-        self.label_Er.setText(_translate("MainWindow", "Provide correct values!"))
+        self.label_AvSp.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:11pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The average transfer speed</span></p></body></html>"))
+        self.label_AvSp.setText(_translate("MainWindow", "Average Speed"))
         self.label_Result.setToolTip(_translate("MainWindow", "<html><head/><body><p>Result</p></body></html>"))
         self.label_Result.setText(_translate("MainWindow", "res"))
-        self.SpeedTest_PB.setText(_translate("MainWindow", "Test"))
-        self.SizeBrowse_PB.setText(_translate("MainWindow", "B"))
-        self.loading.setText(_translate("MainWindow", "TextLabel"))
+        self.label_Si.setToolTip(_translate("MainWindow", "<html><head/><body><p>The file/folder size</p></body></html>"))
+        self.label_Si.setText(_translate("MainWindow", "Size"))
+        self.DMW_label.setText(_translate("MainWindow", "Dark Mode Wrrapper"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Time_Tab), _translate("MainWindow", "Time Estimator"))
+        self.StartD_PB.setToolTip(_translate("MainWindow", "<html><head/><body><p>Start Calculation</p></body></html>"))
+        self.StartD_PB.setText(_translate("MainWindow", "START"))
+        self.label_Time_head.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_Time_head.setText(_translate("MainWindow", "Time:"))
+        self.label_AvSpD.setToolTip(_translate("MainWindow", "<html><head/><body><p>The average transfer speed</p></body></html>"))
+        self.label_AvSpD.setText(_translate("MainWindow", "Speed"))
+        self.input_AvSpD.setToolTip(_translate("MainWindow", "<html><head/><body><p>Enter the average transfer speed</p></body></html>"))
+        self.SPcomboBox.setCurrentText(_translate("MainWindow", "KB/s"))
+        self.SPcomboBox.setItemText(0, _translate("MainWindow", "KB/s"))
+        self.SPcomboBox.setItemText(1, _translate("MainWindow", "MB/s"))
+        self.SPcomboBox.setItemText(2, _translate("MainWindow", "Mb/s"))
+        self.label_seconds.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_seconds.setText(_translate("MainWindow", "Seconds"))
+        self.label_hours.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_hours.setText(_translate("MainWindow", "Hours"))
+        self.label_months.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_months.setText(_translate("MainWindow", "Months"))
+        self.label_decades.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_decades.setText(_translate("MainWindow", "Decades"))
+        self.label_minutes.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_minutes.setText(_translate("MainWindow", "Minutes"))
+        self.label_days.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_days.setText(_translate("MainWindow", "Days"))
+        self.label_years.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_years.setText(_translate("MainWindow", "Years"))
+        self.label_centuries.setToolTip(_translate("MainWindow", "<html><head/><body><p>Time window for transferring</p></body></html>"))
+        self.label_centuries.setText(_translate("MainWindow", "Centuries"))
+        self.label_ResultD.setToolTip(_translate("MainWindow", "<html><head/><body><p>Result</p></body></html>"))
+        self.label_ResultD.setText(_translate("MainWindow", "res"))
+        self.ResetD_PB.setText(_translate("MainWindow", "Reset"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Data_Tab), _translate("MainWindow", "Data Estimator"))
+        self.Save_PB.setText(_translate("MainWindow", "Save settings"))
+        self.SoT_check.setText(_translate("MainWindow", "Stay on top"))
+        self.DM_check.setText(_translate("MainWindow", "Dark Mode"))
+        self.resMsgBox_check.setText(_translate("MainWindow", "View result in a message box"))
+        self.resetFields_check.setText(_translate("MainWindow", "Reset fields on tab change"))
+        self.label_AvSp_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The average transfer speed</p></body></html>"))
+        self.label_AvSp_3.setText(_translate("MainWindow", "Scale (experiemental)  "))
+        self.Restart_label.setText(_translate("MainWindow", "Currently, a restart is required to apply settings"))
+        self.label_About1.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.label_About1.setText(_translate("MainWindow", "About Estimator"))
+        self.label_About2.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.label_About2.setText(_translate("MainWindow", "this version: v5.0 Beta"))
+        self.label_About3.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" text-decoration: underline; color:#3a81bd;\">creative-geek.github.io/Estimator.github.io</span></p></body></html>"))
+        self.label_About3.setText(_translate("MainWindow", "<html><head/><body><p><a href=\"https://creative-geek.github.io/Estimator.github.io/\"><span style=\" text-decoration: underline; color:#3a81bd;\">Visit Website</span></a></p></body></html>"))
+        self.Update_PB.setText(_translate("MainWindow", "Check for updates"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.Settings_Tab), _translate("MainWindow", "Settings"))
+        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Arca Majora 3 Heavy\'; font-size:16pt; font-weight:600; text-decoration: underline;\">Please Read</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">This is NOT a malware!</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Since this app is not registered anywhere, some antivirus software might flag this app. Also, Facebook might not allow a link to it on some of the file hosting services like MEGA to be posted.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">What was that CMD window?</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The CMD window that pops up while the app is launching might trip some of you so this is a clarification: The console window is mandatory for this app to function since “internet speed test” cannot work without it, it is launched and then hidden.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">Nice font, what is its name?</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Font used is Arca Majora 3, This is an old version as of May 2021 and it is free for personal use only!</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; text-decoration: underline;\">Notes:</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Time Estimator and Data Estimator use kibibytes or KiB and it is equal to 1024 bytes, but both refer to them as Kilobytes which equals to 1000 bytes since this is the more commonly known terminology.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The current website is a mess and needs to be refurbished, as a result it might be unavailable or be completely unpublished at random times.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The update functionality won\'t work until the website is up and running. Until then, to check for updates, visit the website.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">If &quot;visit website&quot; doesn\'t do anything, right click and copy location, then paste it in your browser.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Currently, dark mode breaks toolTips for still to be known reasons.</span></p></body></html>"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.infoPage), _translate("MainWindow", "Read Me"))
 import Resources_rc
 
 
