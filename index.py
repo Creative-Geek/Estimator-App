@@ -46,16 +46,10 @@ def suppress_qt_warnings():
 testinginprogress = 0
 #load settings goes here
 #default settings:
-global Stayontop
-global darkmode
-global resetfields
-global viewResMsgBox
-global ScaleFact
-global configpath
 darkmode = 0
 ScaleFact = 1
 Stayontop = 1
-viewResMsgBox = 1
+viewResMsgBox = 0
 resetfields = 0
 
 configpath = "".join((app_path,'/','config.ini'))
@@ -764,16 +758,20 @@ def main():
     window = MainWindow()
     app.setApplicationDisplayName('ES Time')
     window.setWindowTitle('Estimator')
-
-    configFile = pickle.load(open(configpath,"rb"))
-    #print(configFile)
-    darkmode = configFile[0]
-    ScaleFact = configFile[1]
-    Stayontop = configFile[2]
-    viewResMsgBox = configFile[3]
-    resetfields = configFile[4]
-    #print (darkmode)
-
+    global Stayontop
+    global darkmode
+    global resetfields
+    global viewResMsgBox
+    global ScaleFact
+    global configpath
+    try:
+        configFile = pickle.load(open(configpath,"rb"))
+        darkmode = configFile[0]
+        ScaleFact = configFile[1]
+        Stayontop = configFile[2]
+        viewResMsgBox = configFile[3]
+        resetfields = configFile[4]
+    except: pass
     
 
     #setup for Dark mode wrapping
@@ -876,6 +874,7 @@ def main():
     ############
     
     app.exec_()
+
 if __name__ == '__main__':
     suppress_qt_warnings()
     main()
