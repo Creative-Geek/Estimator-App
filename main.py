@@ -558,7 +558,7 @@ class Ui_MainWindow(object):
         self.label_AvSpD.setFont(font)
         self.label_AvSpD.setObjectName("label_AvSpD")
         self.input_AvSpD = QtWidgets.QLineEdit(self.Data_Tab)
-        self.input_AvSpD.setGeometry(QtCore.QRect(100, 20, 151, 20))
+        self.input_AvSpD.setGeometry(QtCore.QRect(100, 20, 145, 22))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -574,7 +574,7 @@ class Ui_MainWindow(object):
         self.input_AvSpD.setClearButtonEnabled(True)
         self.input_AvSpD.setObjectName("input_AvSpD")
         self.SPcomboBox = QtWidgets.QComboBox(self.Data_Tab)
-        self.SPcomboBox.setGeometry(QtCore.QRect(260, 20, 69, 22))
+        self.SPcomboBox.setGeometry(QtCore.QRect(249, 20, 69, 22))
         self.SPcomboBox.setStyleSheet("QComboBox::drop-down:button{color:black; border-radius:5px; background:white;}\n"
 "QComboBox::down-arrow:normal{image: url(:/dropDown/Files/Buttons/dropDown/dropdown.png)}\n"
 "QComboBox::down-arrow:hover{image: url(:/dropDown/Files/Buttons/dropDown/dropDown-hover.png)}\n"
@@ -583,13 +583,13 @@ class Ui_MainWindow(object):
 "font: 75 8pt \"Arca Majora 3 Bold\";\n"
 "background: #ffffff;\n"
 "border-radius: 1px;\n"
-"border: 1.5px solid #656565;\n"
+"border: 0.75px solid #656565;\n"
 "color:black;\n"
 "}\n"
 "#SPcomboBox:hover\n"
 "{\n"
 "color:#00bff3;\n"
-"border: 1.5px solid #00BFF3;\n"
+"border: 0.75px solid #00BFF3;\n"
 "}\n"
 "#SPcomboBox:pressed\n"
 "{\n"
@@ -1319,6 +1319,37 @@ class Ui_MainWindow(object):
 "color:black;\n"
 "}")
         self.ResetD_PB.setObjectName("ResetD_PB")
+        self.SpeedTest_PB_2 = QtWidgets.QPushButton(self.Data_Tab)
+        self.SpeedTest_PB_2.setGeometry(QtCore.QRect(322, 20, 41, 22))
+        font = QtGui.QFont()
+        font.setFamily("Arca Majora 3 Bold")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        self.SpeedTest_PB_2.setFont(font)
+        self.SpeedTest_PB_2.setStyleSheet("#SpeedTest_PB_2 {\n"
+"font: 87 8pt \"Arca Majora 3 Bold\";\n"
+"background: #ffffff;\n"
+"border-radius: 0px;\n"
+"border: 0.75px solid #656565;\n"
+"color:black;\n"
+"}\n"
+"#SpeedTest_PB_2:hover\n"
+"{\n"
+"border: 1.25px solid #00BFF3;\n"
+"color:#00bff3\n"
+"}\n"
+"#SpeedTest_PB_2:pressed\n"
+"{\n"
+" border: 1.25px solid #656565;\n"
+"color:black;\n"
+"}")
+        self.SpeedTest_PB_2.setObjectName("SpeedTest_PB_2")
+        self.loading_2 = QtWidgets.QLabel(self.Data_Tab)
+        self.loading_2.setGeometry(QtCore.QRect(100, 20, 145, 22))
+        self.loading_2.setAlignment(QtCore.Qt.AlignCenter)
+        self.loading_2.setObjectName("loading_2")
         self.tabWidget.addTab(self.Data_Tab, "")
         self.Settings_Tab = QtWidgets.QWidget()
         self.Settings_Tab.setObjectName("Settings_Tab")
@@ -1631,7 +1662,7 @@ class Ui_MainWindow(object):
         self.label_AvSp_3.setBuddy(self.input_AvSp)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         self.SPcomboBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.input_AvSp, self.input_Si)
@@ -1766,6 +1797,13 @@ class Ui_MainWindow(object):
         self.label_ResultD.setToolTip(_translate("MainWindow", "<html><head/><body><p>Result</p></body></html>"))
         self.label_ResultD.setText(_translate("MainWindow", "res"))
         self.ResetD_PB.setText(_translate("MainWindow", "Reset"))
+        self.SpeedTest_PB_2.setToolTip(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:8pt; font-weight:80; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Test the average transfer speed of a disk that of the internet</span></p></body></html>"))
+        self.SpeedTest_PB_2.setText(_translate("MainWindow", "Test"))
+        self.loading_2.setText(_translate("MainWindow", "TextLabel"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Data_Tab), _translate("MainWindow", "Data Estimator"))
         self.Save_PB.setText(_translate("MainWindow", "Save settings"))
         self.SoT_check.setText(_translate("MainWindow", "Stay on top"))

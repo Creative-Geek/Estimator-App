@@ -1,5 +1,5 @@
 #print("Disclaimer: the console window is mandatory for internet speed test to work, it will be hidden afterwards")
-from PyQt5.QtWidgets import QMainWindow,QApplication,QMessageBox ,QPushButton
+from PyQt5.QtWidgets import QMainWindow,QApplication,QMessageBox ,QPushButton, QGraphicsDropShadowEffect
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.uic import loadUiType
@@ -16,6 +16,7 @@ from win32 import win32process
 from win32 import win32gui
 import pickle
 
+
 if getattr(sys, 'frozen', False):
         app_path = os.path.dirname(sys.executable)
 elif __file__:
@@ -25,8 +26,10 @@ elif __file__:
 import qtmodern.styles
 import qtmodern.windows
 
-FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__), "main.ui"))
+#to build it using pyinstaller, replace the following line with the one after it
 
+FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__), "main.ui"))
+#from main import Ui_MainWindow as FORM_CLASS
 
 def callback(hwnd, pid):
   if win32process.GetWindowThreadProcessId(hwnd)[1] == pid:
@@ -102,6 +105,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
         self.cls_PB.clicked.connect(self.closeApp)
         self.mini_PB.clicked.connect(self.minimizeApp)
         self.SpeedTest_PB.clicked.connect(self.SpeedTest)
+        self.SpeedTest_PB_2.clicked.connect(self.SpeedTest)
         self.StartD_PB.clicked.connect(self.StartFuncD)
         self.ResetD_PB.clicked.connect(self.resetDataSpins)
         self.Save_PB.clicked.connect(self.SaveSettings)
@@ -417,8 +421,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
             self.label_Result.setText(Fmsg)
     
 
-
-    def SpeedTest(self):
+    def SpeedTest(self,x):
         #initiate messagebox
         testWhat = QMessageBox(self)
         testWhat.setText("What do you want to Test?")
@@ -433,7 +436,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
         if testinginprogress == 0:
             reply = testWhat.exec_()
         else:
-            QMessageBox.critical(self, "Error", "A test in already in progress, please wait")
+            QMessageBox.critical(self, "Error", "A Test is already in progress, please wait")
             return
         #process replys:
         if reply == 0: #internet:
@@ -443,7 +446,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
             try:
 	            request = requests.get(test_url, timeout=test_timeout)
             except (requests.ConnectionError, requests.Timeout) as exception:
-                QMessageBox.critical(self, "Error", "Seems there's no internet connection.\n It's either that or google is down. Oops!")
+                QMessageBox.critical(self, "Error", "Seems there's no internet connection.\n It's either that or google is down.")
                 return
 
             #initiate test:
@@ -466,9 +469,15 @@ class MainWindow(QMainWindow, FORM_CLASS):
 
     #set Internet speed value to GUi:
     def setInternet_Value(self,return_Val):
-        return_Val = str(round(return_Val,3)) #round then convert to string
-        self.input_AvSp.setText(return_Val) #set value
-        self.RB_KBs.setChecked(1) #check KB/s Unit
+        if return_Val == 0:
+            QMessageBox.critical(self, "Error", "Connection lost")
+        else:
+            return_Val = str(round(return_Val,3)) #round then convert to string
+            if self.tabWidget.currentIndex() == 0:
+                self.input_AvSp.setText(return_Val) #set value
+                self.RB_KBs.setChecked(1) #check KB/s Unit
+            elif self.tabWidget.currentIndex() == 1:
+                self.input_AvSpD.setText(return_Val)
     
     #when thread ends, stop the loading animation and text:
     def evntworker_finished(self):
@@ -488,12 +497,19 @@ class MainWindow(QMainWindow, FORM_CLASS):
 
 
     def StartLoading_internet(self):
-        self.label_Er.setToolTip("Please wait, Internet speed test in progress")
-        self.label_Er.setText("Testing Internet Speed")
         global testinginprogress
-        testinginprogress = 1
-        self.label_Er.show()
-        self.startAnimation()
+        if self.tabWidget.currentIndex() == 0:
+            self.label_Er.setToolTip("Please wait, Internet speed test in progress")
+            self.label_Er.setText("Testing Internet Speed")
+            testinginprogress = 1
+            self.label_Er.show()
+            self.startAnimation()
+        elif self.tabWidget.currentIndex() == 1:
+            self.label_Er.setToolTip("Please wait, Internet speed test in progress")
+            self.label_Er.setText("Testing Internet Speed")
+            testinginprogress = 1
+            self.label_Er.show()
+            self.startAnimation()
 
     def EndLoading_Internet(self):
         self.stopAnimation()
@@ -503,12 +519,20 @@ class MainWindow(QMainWindow, FORM_CLASS):
         
 
     def startAnimation(self):
-        self.loading.show()
-        self.movie.start()
+        if self.tabWidget.currentIndex() == 0:
+            self.loading.show()
+            self.movie.start()
+        elif self.tabWidget.currentIndex() == 1:
+            self.loading_2.show()
+            self.movie.start()
         
     def stopAnimation(self):
-        self.movie.stop()
-        self.loading.hide()
+        if self.tabWidget.currentIndex() == 0:
+            self.movie.stop()
+            self.loading.hide()
+        elif self.tabWidget.currentIndex() == 1:
+            self.movie.stop()
+            self.loading_2.hide()
 
 
 
@@ -743,14 +767,19 @@ class MainWindow(QMainWindow, FORM_CLASS):
 class WorkerThread (QThread):
     return_val = pyqtSignal(float)
     def run(self):
-        isp = speedtest.Speedtest()
-        isp.get_servers()
-        isp.get_best_server()
-        DSP = isp.download()
-        #convert speed to KB/s
-        DownloadSP = DSP / 1024 / 8
-        #emit speed value
-        self.return_val.emit(DownloadSP)
+        try:
+            isp = speedtest.Speedtest()
+            isp.get_servers()
+            isp.get_best_server()
+            DSP = isp.download()
+            #convert speed to KB/s
+            DownloadSP = DSP / 1024 / 8
+            #emit speed value
+            self.return_val.emit(DownloadSP)
+        except:
+            DownloadSP = 0
+            self.return_val.emit(DownloadSP)
+
 
 
 def main():
@@ -758,6 +787,7 @@ def main():
     window = MainWindow()
     app.setApplicationDisplayName('ES Time')
     window.setWindowTitle('Estimator')
+    
     global Stayontop
     global darkmode
     global resetfields
@@ -773,7 +803,17 @@ def main():
         resetfields = configFile[4]
     except: pass
     
-
+    #black shadow effect
+    shadow_black = QGraphicsDropShadowEffect()
+    shadow_black.setBlurRadius(20)
+    shadow_black.setYOffset(5)
+    shadow_black.setXOffset(0)
+    if darkmode == 1:
+        shadow_black.setColor(PyQt5.QtGui.QColor("#A1A1A1"))
+    else:
+        shadow_black.setColor(PyQt5.QtGui.QColor("#c1c1c1"))
+    
+    window.tabWidget.setGraphicsEffect(shadow_black)
     #setup for Dark mode wrapping
     if darkmode == 1:
         #Tabs
@@ -829,6 +869,7 @@ def main():
         #DataES PB
         window.StartD_PB.setStyleSheet("#StartD_PB { background: #656565; border-radius: 8px; border: 2px solid #FFFFFF; color:white; } #StartD_PB:hover { border: 3px solid #FFFFFF; /*color:#00bff3;*/ background: #00bff3; } #StartD_PB:pressed { /*border: 3px solid lightgray;*/ background: #007392; color:lightgray; }")
         window.ResetD_PB.setStyleSheet("#ResetD_PB { font: 87 8pt 'Arca Majora 3 Heavy'; background: #656565; border-radius: 5.3px; border: 1px solid #FFFFFF; color:white; } #ResetD_PB:hover { border: 1.25px solid #FFFFFF; background: #00bff3; } #ResetD_PB:pressed { background: #007392; color:lightgray; }")
+        window.SpeedTest_PB_2.setStyleSheet("#SpeedTest_PB_2 { font: 87 8pt 'Arca Majora 3 Heavy'; background: #656565; border-radius: 5.3px; border: 1px solid #FFFFFF; color:white; } #SpeedTest_PB_2:hover { border: 1.25px solid #FFFFFF; background: #00bff3; } #SpeedTest_PB_2:pressed { background: #007392; color:lightgray; }")
         #savePB
         window.Save_PB.setStyleSheet("#Save_PB { font: 87 8pt 'Arca Majora 3 Heavy'; background: #656565; border-radius: 5.3px; border: 1px solid #FFFFFF; color:white; } #Save_PB:hover { border: 1.25px solid #FFFFFF; background: #00bff3; } #Save_PB:pressed { background: #007392; color:lightgray; }")
         #UpdatePB
@@ -855,6 +896,14 @@ def main():
     #initiate loading animation
     window.movie = QMovie(":/Animation/Files/Animation/loader.gif")
     window.loading.setMovie(window.movie)
+    window.loading_2.setMovie(window.movie)
+    window.loading.hide()
+    window.loading_2.hide()
+
+    
+
+
+
     window.show()
 
     #load theme
@@ -872,9 +921,11 @@ def main():
     if font_status == -1 or font_status_2 == -1:
         QMessageBox.Warning(window, "Font failed to load", "Font failed to load, using default system font")
     ############
+
     
     app.exec_()
 
 if __name__ == '__main__':
     suppress_qt_warnings()
     main()
+
