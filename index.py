@@ -1,4 +1,4 @@
-#print("Disclaimer: the console window is mandatory for internet speed test to work, it will be hidden afterwards")
+print("Disclaimer: the console window is mandatory for internet speed test to work, it will be minimized")
 from PyQt5.QtWidgets import QMainWindow,QApplication,QMessageBox ,QPushButton, QGraphicsDropShadowEffect
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -14,8 +14,11 @@ import speedtest
 from win32 import win32api
 from win32 import win32process
 from win32 import win32gui
+import webbrowser
 import pickle
-
+#hide cmd?
+import ctypes
+ctypes.windll.user32.ShowWindow( ctypes.windll.kernel32.GetConsoleWindow(), 6 )
 
 if getattr(sys, 'frozen', False):
         app_path = os.path.dirname(sys.executable)
@@ -28,16 +31,17 @@ import qtmodern.windows
 
 #to build it using pyinstaller, replace the following line with the one after it
 
-FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__), "main.ui"))
-#from main import Ui_MainWindow as FORM_CLASS
+#FORM_CLASS,_=loadUiType(path.join(path.dirname(__file__), "main.ui"))
+from main import Ui_MainWindow as FORM_CLASS
 
-def callback(hwnd, pid):
+
+"""def callback(hwnd, pid):
   if win32process.GetWindowThreadProcessId(hwnd)[1] == pid:
     # hide window
     win32gui.ShowWindow(hwnd, 0)
 
 # find hwnd of parent process, which is the cmd.exe window
-win32gui.EnumWindows(callback, os.getppid())
+win32gui.EnumWindows(callback, os.getppid())"""
 
 #Supress Warning
 def suppress_qt_warnings():
@@ -45,7 +49,7 @@ def suppress_qt_warnings():
     environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
     environ["QT_SCREEN_SCALE_FACTORS"] = "1"
     environ["QT_SCALE_FACTOR"] = str(ScaleFact)
-
+#sketchy workaround
 testinginprogress = 0
 #load settings goes here
 #default settings:
@@ -54,7 +58,7 @@ ScaleFact = 1
 Stayontop = 1
 viewResMsgBox = 0
 resetfields = 0
-
+#load settings from file and overwrite default settings
 configpath = "".join((app_path,'/','config.ini'))
 try:
     configFile = pickle.load(open(configpath,"rb"))
@@ -109,6 +113,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
         self.StartD_PB.clicked.connect(self.StartFuncD)
         self.ResetD_PB.clicked.connect(self.resetDataSpins)
         self.Save_PB.clicked.connect(self.SaveSettings)
+        self.Visit_website.clicked.connect(self.Openwebsite)
 
     
     def HandleEvents(self):
@@ -219,6 +224,10 @@ class MainWindow(QMainWindow, FORM_CLASS):
             self.label_Perc.setStyleSheet("color: red")
         self.input_Comp.setFocus()
         self.input_Comp.setSelection(0,100)
+
+    def Openwebsite(self):
+        webbrowser.open('https://creative-geek.github.io/estimator')
+        
 
     def StartFunc(self):
         #Error Checking:
@@ -441,13 +450,22 @@ class MainWindow(QMainWindow, FORM_CLASS):
         #process replys:
         if reply == 0: #internet:
             #check for connection:
-            test_url = "http://www.google.com"
+            test_url = "https://www.google.com/"
             test_timeout = 5
             try:
 	            request = requests.get(test_url, timeout=test_timeout)
             except (requests.ConnectionError, requests.Timeout) as exception:
-                QMessageBox.critical(self, "Error", "Seems there's no internet connection.\n It's either that or google is down.")
-                return
+                #QMessageBox.critical(self, "Error", "Seems there's no internet connection.\n It's either that or google is down.") #error only
+                #initiate messagebox
+                forcetest = QMessageBox(self)
+                forcetest.setText("Seems there's no internet connection.\n It's either that or google is down.\nDo you want to force test internet speed? (might crash)")
+                forcetest.setWindowTitle("Error")
+                forcetest.setIcon(QMessageBox.Critical)
+                forcetest.addButton(QPushButton('Yes'), QMessageBox.YesRole)
+                forcetest.addButton(QPushButton('Cancel'), QMessageBox.NoRole)
+                forcetestreply = forcetest.exec_()
+                if forcetestreply == 1:
+                    return
 
             #initiate test:
             self.StartLoading_internet()
@@ -459,7 +477,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
             self.worker.return_val.connect(self.setInternet_Value)
             
         elif reply == 1:
-            QMessageBox.information(self, "Still in dev", "Still in dev")
+            QMessageBox.information(self, "Not yet available", "This feature require more skill to develob.\nYou can head to the github repo (link in settings tab) if you want to help.")
 
             pass
         elif reply == 2:
@@ -478,6 +496,7 @@ class MainWindow(QMainWindow, FORM_CLASS):
                 self.RB_KBs.setChecked(1) #check KB/s Unit
             elif self.tabWidget.currentIndex() == 1:
                 self.input_AvSpD.setText(return_Val)
+                self.SPcomboBox.setCurrentIndex(0)
     
     #when thread ends, stop the loading animation and text:
     def evntworker_finished(self):
@@ -574,7 +593,6 @@ class MainWindow(QMainWindow, FORM_CLASS):
     def StartFuncD(self):
         #get values
         iAvSpD = self.input_AvSpD.text()
-
         Tcents = self.spinCenturies.value()
         Tdecs = self.spinDecades.value()
         Tyers = self.spinYears.value()
@@ -873,7 +891,7 @@ def main():
         #savePB
         window.Save_PB.setStyleSheet("#Save_PB { font: 87 8pt 'Arca Majora 3 Heavy'; background: #656565; border-radius: 5.3px; border: 1px solid #FFFFFF; color:white; } #Save_PB:hover { border: 1.25px solid #FFFFFF; background: #00bff3; } #Save_PB:pressed { background: #007392; color:lightgray; }")
         #UpdatePB
-        window.Update_PB.setStyleSheet("#Update_PB { font: 87 8pt 'Arca Majora 3 Heavy'; background: #656565; border-radius: 5.3px; border: 1px solid #FFFFFF; color:white; } #Update_PB:hover { border: 1.25px solid #FFFFFF; background: #00bff3; } #Update_PB:pressed { background: #007392; color:lightgray; }")
+        #window.Update_PB.setStyleSheet("#Update_PB { font: 87 8pt 'Arca Majora 3 Heavy'; background: #656565; border-radius: 5.3px; border: 1px solid #FFFFFF; color:white; } #Update_PB:hover { border: 1.25px solid #FFFFFF; background: #00bff3; } #Update_PB:pressed { background: #007392; color:lightgray; }")
         #scalesettingSpinner
         window.scaleSpin.setStyleSheet("color:white;")
         #Restart_label

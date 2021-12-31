@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
         self.Top.setFrameShadow(QtWidgets.QFrame.Raised)
         self.Top.setObjectName("Top")
         self.win_title = QtWidgets.QLabel(self.Top)
-        self.win_title.setGeometry(QtCore.QRect(6, 2, 161, 21))
+        self.win_title.setGeometry(QtCore.QRect(6, 2, 121, 21))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Heavy")
         font.setPointSize(11)
@@ -181,7 +181,8 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.tabWidget.setFont(font)
-        self.tabWidget.setStyleSheet("QTabWidget::pane {\n"
+        self.tabWidget.setStyleSheet("\n"
+"QTabWidget::pane {\n"
 "  border: 1px solid lightgray;\n"
 "  top:-1px; \n"
 "\n"
@@ -233,7 +234,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setElideMode(QtCore.Qt.ElideNone)
         self.tabWidget.setTabsClosable(False)
         self.tabWidget.setMovable(False)
-        self.tabWidget.setTabBarAutoHide(True)
+        self.tabWidget.setProperty("tabBarAutoHide", True)
         self.tabWidget.setObjectName("tabWidget")
         self.Time_Tab = QtWidgets.QWidget()
         self.Time_Tab.setObjectName("Time_Tab")
@@ -601,7 +602,7 @@ class Ui_MainWindow(object):
         self.SPcomboBox.addItem("")
         self.SPcomboBox.addItem("")
         self.layoutWidget2 = QtWidgets.QWidget(self.Data_Tab)
-        self.layoutWidget2.setGeometry(QtCore.QRect(40, 80, 442, 51))
+        self.layoutWidget2.setGeometry(QtCore.QRect(40, 80, 458, 51))
         self.layoutWidget2.setObjectName("layoutWidget2")
         self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget2)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -1354,7 +1355,7 @@ class Ui_MainWindow(object):
         self.Settings_Tab = QtWidgets.QWidget()
         self.Settings_Tab.setObjectName("Settings_Tab")
         self.Save_PB = QtWidgets.QPushButton(self.Settings_Tab)
-        self.Save_PB.setGeometry(QtCore.QRect(310, 110, 81, 21))
+        self.Save_PB.setGeometry(QtCore.QRect(280, 110, 81, 21))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
         font.setPointSize(8)
@@ -1380,7 +1381,7 @@ class Ui_MainWindow(object):
 "}")
         self.Save_PB.setObjectName("Save_PB")
         self.layoutWidget3 = QtWidgets.QWidget(self.Settings_Tab)
-        self.layoutWidget3.setGeometry(QtCore.QRect(10, 10, 241, 123))
+        self.layoutWidget3.setGeometry(QtCore.QRect(10, 10, 252, 123))
         self.layoutWidget3.setObjectName("layoutWidget3")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.layoutWidget3)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -1554,49 +1555,32 @@ class Ui_MainWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_About2.setFont(font)
         self.label_About2.setObjectName("label_About2")
-        self.label_About3 = QtWidgets.QLabel(self.Settings_Tab)
-        self.label_About3.setGeometry(QtCore.QRect(360, 70, 81, 18))
-        font = QtGui.QFont()
-        font.setFamily("Arca Majora 3 Heavy")
-        font.setPointSize(8)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(True)
-        font.setWeight(10)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.label_About3.setFont(font)
-        self.label_About3.setStyleSheet("color:#1f8fed;\n"
-"font: 87 8pt \"Arca Majora 3 Heavy\";\n"
-"text-decoration: underline;")
-        self.label_About3.setObjectName("label_About3")
-        self.Update_PB = QtWidgets.QPushButton(self.Settings_Tab)
-        self.Update_PB.setGeometry(QtCore.QRect(400, 110, 111, 21))
+        self.Visit_website = QtWidgets.QPushButton(self.Settings_Tab)
+        self.Visit_website.setGeometry(QtCore.QRect(370, 110, 81, 21))
         font = QtGui.QFont()
         font.setFamily("Arca Majora 3 Bold")
         font.setPointSize(8)
-        font.setBold(False)
+        font.setBold(True)
         font.setItalic(False)
-        font.setWeight(10)
-        self.Update_PB.setFont(font)
-        self.Update_PB.setStyleSheet("\n"
-"#Update_PB {\n"
-"font: 87 8pt \"Arca Majora 3 Bold\";\n"
+        font.setWeight(75)
+        self.Visit_website.setFont(font)
+        self.Visit_website.setStyleSheet("#Visit_website {\n"
 "background: #ffffff;\n"
 "border-radius: 0px;\n"
 "border: 0.75px solid #656565;\n"
 "color:black;\n"
 "}\n"
-"#Update_PB:hover\n"
+"#Visit_website:hover\n"
 "{\n"
 "border: 1.25px solid #00BFF3;\n"
 "color:#00bff3\n"
 "}\n"
-"#Update_PB:pressed\n"
+"#Visit_website:pressed\n"
 "{\n"
 " border: 1.25px solid #656565;\n"
 "color:black;\n"
 "}")
-        self.Update_PB.setObjectName("Update_PB")
+        self.Visit_website.setObjectName("Visit_website")
         self.tabWidget.addTab(self.Settings_Tab, "")
         self.infoPage = QtWidgets.QWidget()
         self.infoPage.setObjectName("infoPage")
@@ -1662,7 +1646,7 @@ class Ui_MainWindow(object):
         self.label_AvSp_3.setBuddy(self.input_AvSp)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.SPcomboBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.input_AvSp, self.input_Si)
@@ -1678,8 +1662,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Time Estimator v5.0 Alpha"))
-        self.win_title.setText(_translate("MainWindow", "Estimator V5.0 Beta"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Time Estimator v5.0"))
+        self.win_title.setText(_translate("MainWindow", "Estimator V5.0"))
         self.cls_PB.setText(_translate("MainWindow", "x"))
         self.mini_PB.setText(_translate("MainWindow", "-"))
         self.loading.setText(_translate("MainWindow", "TextLabel"))
@@ -1761,7 +1745,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'Arca Majora 3 Bold\'; font-size:11pt; font-weight:600; font-style:normal;\">\n"
 "<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The average transfer speed</span></p></body></html>"))
         self.label_AvSp.setText(_translate("MainWindow", "Average Speed"))
-        self.label_Result.setToolTip(_translate("MainWindow", "<html><head/><body><p>Result</p></body></html>"))
+        self.label_Result.setToolTip(_translate("MainWindow", "<html><head/><body><p>Result</p><p>HH:MM:SS</p></body></html>"))
         self.label_Result.setText(_translate("MainWindow", "res"))
         self.label_Si.setToolTip(_translate("MainWindow", "<html><head/><body><p>The file/folder size</p></body></html>"))
         self.label_Si.setText(_translate("MainWindow", "Size"))
@@ -1807,19 +1791,17 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Data_Tab), _translate("MainWindow", "Data Estimator"))
         self.Save_PB.setText(_translate("MainWindow", "Save settings"))
         self.SoT_check.setText(_translate("MainWindow", "Stay on top"))
-        self.DM_check.setText(_translate("MainWindow", "Dark Mode"))
-        self.resMsgBox_check.setText(_translate("MainWindow", "View result in a message box"))
+        self.DM_check.setText(_translate("MainWindow", "Dark Mode (Different style)"))
+        self.resMsgBox_check.setText(_translate("MainWindow", "View results in a message box"))
         self.resetFields_check.setText(_translate("MainWindow", "Reset fields on tab change"))
         self.label_AvSp_3.setToolTip(_translate("MainWindow", "<html><head/><body><p>The average transfer speed</p></body></html>"))
-        self.label_AvSp_3.setText(_translate("MainWindow", "Scale (experiemental)  "))
-        self.Restart_label.setText(_translate("MainWindow", "Currently, a restart is required to apply settings"))
+        self.label_AvSp_3.setText(_translate("MainWindow", "Scale (unsupported)  "))
+        self.Restart_label.setText(_translate("MainWindow", "Save settings & Restart to apply"))
         self.label_About1.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
         self.label_About1.setText(_translate("MainWindow", "About Estimator"))
         self.label_About2.setToolTip(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
-        self.label_About2.setText(_translate("MainWindow", "this version: v5.0 Beta"))
-        self.label_About3.setToolTip(_translate("MainWindow", "<html><head/><body><p><span style=\" text-decoration: underline; color:#3a81bd;\">creative-geek.github.io/Estimator.github.io</span></p></body></html>"))
-        self.label_About3.setText(_translate("MainWindow", "<html><head/><body><p><a href=\"https://creative-geek.github.io/Estimator.github.io/\"><span style=\" text-decoration: underline; color:#3a81bd;\">Visit Website</span></a></p></body></html>"))
-        self.Update_PB.setText(_translate("MainWindow", "Check for updates"))
+        self.label_About2.setText(_translate("MainWindow", "version: v5.0"))
+        self.Visit_website.setText(_translate("MainWindow", "Visit Website"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Settings_Tab), _translate("MainWindow", "Settings"))
         self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -1829,15 +1811,16 @@ class Ui_MainWindow(object):
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">This is NOT a malware!</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Since this app is not registered anywhere, some antivirus software might flag this app. Also, Facebook might not allow a link to it on some of the file hosting services like MEGA to be posted.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">What was that CMD window?</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The CMD window that pops up while the app is launching might trip some of you so this is a clarification: The console window is mandatory for this app to function since “internet speed test” cannot work without it, it is launched and then hidden.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The CMD window that pops up while the app is launching might trip some of you so this is a clarification: The console window is mandatory for this app to function since “internet speed test” uses it to send commands to ookla\'s api, it is launched and then hidden.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">Nice font, what is its name?</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Font used is Arca Majora 3, This is an old version as of May 2021 and it is free for personal use only!</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Font used is Arca Majora 3, This is an old version as of May 2021 and it was free for personal use only. meaning you can\'t reuse it in other projects.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; text-decoration: underline;\">Notes:</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Time Estimator and Data Estimator use kibibytes or KiB and it is equal to 1024 bytes, but both refer to them as Kilobytes which equals to 1000 bytes since this is the more commonly known terminology.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The current website is a mess and needs to be refurbished, as a result it might be unavailable or be completely unpublished at random times.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">The update functionality won\'t work until the website is up and running. Until then, to check for updates, visit the website.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">If &quot;visit website&quot; doesn\'t do anything, right click and copy location, then paste it in your browser.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Currently, dark mode breaks toolTips for still to be known reasons.</span></p></body></html>"))
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">To check for updates, just visit the website and look in changelog. The software has clear version numbering.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Dark mode breaks toolTips as it\'s just a wrapper, It is not officially supported.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">This app is designed to work on windows only, the source code is available if you decide to port it to any other OS.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">This app is designed to work on 1080p monitors at 100% scaling, any other scaling might break the layout but it will still function. in case the scaling hid something, use the (unsupported) inapp scaling option instead.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">This app is its programmer\'s first, please don\'t judge, your help is appreciated.</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.infoPage), _translate("MainWindow", "Read Me"))
 import Resources_rc
 

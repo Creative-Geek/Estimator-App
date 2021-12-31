@@ -1,0 +1,2719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Creative Geek</author>
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>532</width>
+    <height>250</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>532</width>
+    <height>207</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>532</width>
+    <height>250</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arca Majora 3</family>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Time Estimator v5.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resources.qrc">
+    <normaloff>:/Icon/Files/Icon/TimeES icon.png</normaloff>:/Icon/Files/Icon/TimeES icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog QToolButton {
+    color: #6e6e6e;
+    text-align: center;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0.3, x2:0, y2:1, stop:0 #f5f5f5, stop:1 #e6e6e6);
+    border: 1px solid #d2d2d2;
+    border-bottom-color: #c3c3c3; /* simulates shadow under the button */
+    padding: 0px; /* different than regular QPushButton */
+    margin: 2px; /* different than regular QPushButton */
+    min-height: 16px; /* same as QTabBar QPushButton min-width */
+    border-radius: 4px;
+}
+
+QDialog QToolButton:hover,
+QDialog QToolButton:focus {
+    color: white;
+    border-color: #3874f2;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #5e90fa, stop:1 #3874f2);
+}
+
+QDialog QToolButton:disabled,
+QDialog QToolButton:disabled:checked {
+    color: #b6b6b6;
+    border-color: #e6e6e6;
+    background-color: #e6e6e6;
+}
+
+QDialog QToolButton:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 #3874f2, stop:1 #5e90fa);
+}</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QFrame" name="Top">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>541</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="win_title">
+     <property name="geometry">
+      <rect>
+       <x>6</x>
+       <y>2</y>
+       <width>121</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arca Majora 3 Heavy</family>
+       <pointsize>11</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+       <stylestrategy>PreferAntialias</stylestrategy>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Estimator V5.0</string>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="openExternalLinks">
+      <bool>false</bool>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::NoTextInteraction</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cls_PB">
+     <property name="geometry">
+      <rect>
+       <x>513</x>
+       <y>2</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arca Majora 3 Heavy</family>
+       <pointsize>11</pointsize>
+       <weight>10</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#cls_PB {
+background-color:#B70F0F;
+border: none;
+background-repeat: none;
+color: rgb(255, 255, 255);
+font: 87 11pt &quot;Arca Majora 3 Heavy&quot;;
+border-radius: 4px;
+}
+#cls_PB:hover
+{
+background-color:rgb(229, 0, 4);
+}
+#cls_PB:pressed
+{
+background-color: rgb(160, 0, 0);
+}</string>
+     </property>
+     <property name="text">
+      <string>x</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="mini_PB">
+     <property name="geometry">
+      <rect>
+       <x>492</x>
+       <y>2</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arca Majora 3 Heavy</family>
+       <pointsize>11</pointsize>
+       <weight>10</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#mini_PB {
+background-color:#CB8B1D;
+border: none;
+background-repeat: none;
+color: rgb(255, 255, 255);
+font: 87 11pt &quot;Arca Majora 3 Heavy&quot;;
+border-radius: 4px;
+}
+#mini_PB:hover
+{
+background-color:#e69d20;
+}
+#mini_PB:pressed
+{
+background-color:#996915;
+}</string>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="border_left">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>3</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QFrame" name="border_right">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>529</x>
+      <y>0</y>
+      <width>3</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QFrame" name="border_bottom">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>187</y>
+      <width>532</width>
+      <height>3</height>
+     </rect>
+    </property>
+    <property name="statusTip">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleName">
+     <string notr="true"/>
+    </property>
+    <property name="accessibleDescription">
+     <string notr="true"/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>21</y>
+      <width>526</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arca Majora 3 Bold</family>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QTabWidget::pane {
+  border: 1px solid lightgray;
+  top:-1px; 
+
+} 
+
+
+QTabBar::tab {
+  background: rgb(230, 230, 230); 
+  border-bottom: 1px solid lightgray; 
+  border-right: 1px solid lightgray; 
+border-top-right-radius:10px;
+  padding: 4px;
+} 
+
+QTabBar::tab:selected { 
+
+border: 0px solid lightgray;
+  border-bottom: 3px solid#3A81BD; 
+  background: #00BFF3; 
+  margin-bottom: -1px; 
+color:white;
+border-right: 2px solid#3A81BD; 
+}
+
+QTabBar::tab:hover:selected { 
+  border-bottom: 3px solid#3A81BD; 
+  background:#1bb3dc; 
+  margin-bottom: -1px;
+color:white;
+}
+QTabBar::tab:hover:!selected { 
+  border-bottom: 3px solid#656565; 
+  background:#f5f5f5; 
+  margin-bottom: -1px;
+color:black;
+}
+QTabBar::tab:pressed:!selected { 
+  border-bottom: 3px solid#656565; 
+  background:/*#cccccc*/#3A81BD; 
+  margin-bottom: -1px; 
+color:white;
+}
+QTabBar::tab:pressed:selected { 
+  border-bottom: 3px solid#656565; 
+  background:#3A81BD; 
+  margin-bottom: -1px; 
+color:white;
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::ElideNone</enum>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <property name="movable">
+     <bool>false</bool>
+    </property>
+    <property name="tabBarAutoHide" stdset="0">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="Time_Tab">
+     <attribute name="title">
+      <string>Time Estimator</string>
+     </attribute>
+     <widget class="QLabel" name="loading">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>112</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="input_Comp">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>70</y>
+        <width>37</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter how much of the transfer is already done&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Er">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>97</y>
+        <width>171</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Please recheck the highlighted values (red)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Provide correct values!</string>
+      </property>
+      <property name="buddy">
+       <cstring>input_AvSp</cstring>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="SpeedTest_PB">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>11</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>8</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:8pt; font-weight:80; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Test the average transfer speed of a disk that of the internet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#SpeedTest_PB {
+font: 87 8pt &quot;Arca Majora 3 Bold&quot;;
+background: #ffffff;
+border-radius: 0px;
+border: 0.75px solid #656565;
+color:black;
+}
+#SpeedTest_PB:hover
+{
+border: 1.25px solid #00BFF3;
+color:#00bff3
+}
+#SpeedTest_PB:pressed
+{
+ border: 1.25px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>Test</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Perc">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>70</y>
+        <width>21</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>%</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="input_Si">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>71</y>
+        <width>133</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:8pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Enter the file/folder size&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="cursorMoveStyle">
+       <enum>Qt::LogicalMoveStyle</enum>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Start_PB">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>10</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <stylestrategy>PreferAntialias</stylestrategy>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:14pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Start Calculation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#Start_PB {
+background: #ffffff;
+border-radius: 0px;
+border: 3px solid #656565;
+color:black;
+}
+#Start_PB:hover
+{
+border: 5px solid #00BFF3;
+color:#00bff3
+}
+#Start_PB:pressed
+{
+ border: 5px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>START</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>101</y>
+        <width>171</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="RB_Si">
+       <item>
+        <widget class="QRadioButton" name="RB_MB">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Change Size units to MegaByte (1024 KB)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>MB</string>
+         </property>
+         <property name="shortcut">
+          <string>K</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="RB_GB">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Change Size units to GigaByte (1024 MB)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>GB</string>
+         </property>
+         <property name="shortcut">
+          <string>M</string>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="RB_TB">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Change Size units to TeraByte (1024 GB)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>TB</string>
+         </property>
+         <property name="shortcut">
+          <string>Shift+M</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="SizeBrowse_PB">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>70</y>
+        <width>21</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>8</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#SizeBrowse_PB {
+font: 87 8pt &quot;Arca Majora 3 Bold&quot;;
+background: #ffffff;
+border-radius: 0px;
+border: 0.75px solid #656565;
+color:black;
+}
+#SizeBrowse_PB:hover
+{
+border: 1.25px solid #00BFF3;
+color:#00bff3
+}
+#SizeBrowse_PB:pressed
+{
+ border: 1.25px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>B</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="input_AvSp">
+      <property name="geometry">
+       <rect>
+        <x>159</x>
+        <y>11</y>
+        <width>133</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:8pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The average transfer speed&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Comp">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>70</y>
+        <width>81</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;How much of the transfer is already done&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Completed</string>
+      </property>
+      <property name="buddy">
+       <cstring>input_Comp</cstring>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>40</y>
+        <width>175</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="RB_AvSp">
+       <item>
+        <widget class="QRadioButton" name="RB_KBs">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Change Speed units to KiloBytes per second (1024 bytes/s)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>KB/s</string>
+         </property>
+         <property name="shortcut">
+          <string>K</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="RB_MBs">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Change Speed units to MegaBytes per second (1024 KB/s)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>MB/s</string>
+         </property>
+         <property name="shortcut">
+          <string>M</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="RB_Mbs">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:9pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Change Speed units to Megabits per second (Megabit = 1/8 of 1 Megabyte, mostly used to measure internet speed)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="whatsThis">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Mb/s</string>
+         </property>
+         <property name="shortcut">
+          <string>Shift+M</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+      <zorder>RB_Mbs</zorder>
+      <zorder>RB_KBs</zorder>
+      <zorder>RB_MBs</zorder>
+     </widget>
+     <widget class="QLabel" name="label_AvSp">
+      <property name="geometry">
+       <rect>
+        <x>41</x>
+        <y>11</y>
+        <width>112</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:11pt; font-weight:600; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The average transfer speed&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Average Speed</string>
+      </property>
+      <property name="buddy">
+       <cstring>input_AvSp</cstring>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Result">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>511</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Result&lt;/p&gt;&lt;p&gt;HH:MM:SS&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(19, 125, 37);
+</string>
+      </property>
+      <property name="text">
+       <string>res</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="buddy">
+       <cstring>input_Si</cstring>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Si">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>71</y>
+        <width>29</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The file/folder size&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Size</string>
+      </property>
+      <property name="buddy">
+       <cstring>input_Si</cstring>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DMW_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>190</y>
+        <width>101</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dark Mode Wrrapper</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Data_Tab">
+     <attribute name="title">
+      <string>Data Estimator</string>
+     </attribute>
+     <widget class="QPushButton" name="StartD_PB">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>10</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <stylestrategy>PreferAntialias</stylestrategy>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Start Calculation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#StartD_PB {
+background: #ffffff;
+border-radius: 0px;
+border: 3px solid #656565;
+color:black;
+}
+#StartD_PB:hover
+{
+border: 5px solid #00BFF3;
+color:#00bff3
+}
+#StartD_PB:pressed
+{
+ border: 5px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>START</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Time_head">
+      <property name="geometry">
+       <rect>
+        <x>42</x>
+        <y>50</y>
+        <width>61</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Heavy</family>
+        <pointsize>11</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 87 11pt &quot;Arca Majora 3 Heavy&quot;;
+text-decoration: underline;</string>
+      </property>
+      <property name="text">
+       <string>Time:</string>
+      </property>
+      <property name="buddy">
+       <cstring>input_Si</cstring>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_AvSpD">
+      <property name="geometry">
+       <rect>
+        <x>42</x>
+        <y>20</y>
+        <width>51</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The average transfer speed&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Speed</string>
+      </property>
+      <property name="buddy">
+       <cstring>input_AvSp</cstring>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="input_AvSpD">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>145</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter the average transfer speed&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="SPcomboBox">
+      <property name="geometry">
+       <rect>
+        <x>249</x>
+        <y>20</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox::drop-down:button{color:black; border-radius:5px; background:white;}
+QComboBox::down-arrow:normal{image: url(:/dropDown/Files/Buttons/dropDown/dropdown.png)}
+QComboBox::down-arrow:hover{image: url(:/dropDown/Files/Buttons/dropDown/dropDown-hover.png)}
+
+#SPcomboBox {
+font: 75 8pt &quot;Arca Majora 3 Bold&quot;;
+background: #ffffff;
+border-radius: 1px;
+border: 0.75px solid #656565;
+color:black;
+}
+#SPcomboBox:hover
+{
+color:#00bff3;
+border: 0.75px solid #00BFF3;
+}
+#SPcomboBox:pressed
+{
+color:black;
+}
+</string>
+      </property>
+      <property name="currentText">
+       <string>KB/s</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>KB/s</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>MB/s</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Mb/s</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>80</y>
+        <width>458</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_seconds">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Seconds</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_hours">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Hours</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QSpinBox" name="spinHours">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>23</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_months">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Months</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5">
+        <widget class="QSpinBox" name="spinMonths">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>11</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6">
+        <widget class="QLabel" name="label_decades">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Decades</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7">
+        <widget class="QSpinBox" name="spinDecades">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>9</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_minutes">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Minutes</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinMinutes">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>59</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_days">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Days</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QSpinBox" name="spinDays">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="label_years">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Years</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QSpinBox" name="spinYears">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>99</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <widget class="QLabel" name="label_centuries">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Time window for transferring&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="text">
+          <string>Centuries</string>
+         </property>
+         <property name="buddy">
+          <cstring>input_Si</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="7">
+        <widget class="QSpinBox" name="spinCenturies">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="spinSeconds">
+         <property name="styleSheet">
+          <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+         </property>
+         <property name="maximum">
+          <number>59</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="label_ResultD">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>511</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Result&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(19, 125, 37);
+</string>
+      </property>
+      <property name="text">
+       <string>res</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="buddy">
+       <cstring>input_Si</cstring>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ResetD_PB">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>50</y>
+        <width>51</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>8</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+#ResetD_PB {
+font: 87 8pt &quot;Arca Majora 3 Bold&quot;;
+background: #ffffff;
+border-radius: 0px;
+border: 0.75px solid #656565;
+color:black;
+}
+#ResetD_PB:hover
+{
+border: 1.25px solid #00BFF3;
+color:#00bff3
+}
+#ResetD_PB:pressed
+{
+ border: 1.25px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="SpeedTest_PB_2">
+      <property name="geometry">
+       <rect>
+        <x>322</x>
+        <y>20</y>
+        <width>41</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>8</pointsize>
+        <weight>10</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arca Majora 3 Bold'; font-size:8pt; font-weight:80; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Test the average transfer speed of a disk that of the internet&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#SpeedTest_PB_2 {
+font: 87 8pt &quot;Arca Majora 3 Bold&quot;;
+background: #ffffff;
+border-radius: 0px;
+border: 0.75px solid #656565;
+color:black;
+}
+#SpeedTest_PB_2:hover
+{
+border: 1.25px solid #00BFF3;
+color:#00bff3
+}
+#SpeedTest_PB_2:pressed
+{
+ border: 1.25px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>Test</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="loading_2">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>145</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Settings_Tab">
+     <attribute name="title">
+      <string>Settings</string>
+     </attribute>
+     <widget class="QPushButton" name="Save_PB">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>110</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>8</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#Save_PB {
+background: #ffffff;
+border-radius: 0px;
+border: 0.75px solid #656565;
+color:black;
+}
+#Save_PB:hover
+{
+border: 1.25px solid #00BFF3;
+color:#00bff3
+}
+#Save_PB:pressed
+{
+ border: 1.25px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>Save settings</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>252</width>
+        <height>123</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QCheckBox" name="SoT_check">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Stay on top</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="DM_check">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Dark Mode (Different style)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="resMsgBox_check">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>View results in a message box</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="resetFields_check">
+         <property name="font">
+          <font>
+           <family>Arca Majora 3 Bold</family>
+           <pointsize>11</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Reset fields on tab change</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_AvSp_3">
+           <property name="font">
+            <font>
+             <family>Arca Majora 3 Bold</family>
+             <pointsize>11</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The average transfer speed&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Scale (unsupported)  </string>
+           </property>
+           <property name="buddy">
+            <cstring>input_AvSp</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="scaleSpin">
+           <property name="styleSheet">
+            <string notr="true">QSpinBox::up-arrow{
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_dark.png);
+}
+
+QSpinBox::up-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/up_arrow_lighter.png);
+}
+
+QSpinBox::down-arrow {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_dark.png);
+}
+
+QSpinBox::down-arrow:focus {
+    image: url(:/Arrows/Files/Buttons/Arrow/down_arrow_lighter.png);
+}
+
+QSpinBox{
+    color: #6e6e6e;
+    background-color: #e0e0e0;
+    selection-color: white;
+    selection-background-color: #2255bf;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+QSpinBox:focus {
+    color: black;
+    border-color: #7cabf9;
+    border-right-color: qlineargradient(spread:pad, x1:1, y1:0.8, x2:1, y2:0, stop:0 #5e90fa, stop:1 #7cabf9);
+    background-color: #cbd8e6;
+}
+
+QSpinBox:up-button,
+QSpinBox:down-button{
+    background-color: #d2d2d2;
+}
+
+QSpinBox:up-button{
+    border-top-right-radius: 3px;
+}
+
+QSpinBox:down-button {
+    border-bottom-right-radius: 3px;
+}
+
+QSpinBox:up-button:focus{
+    background-color:qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+
+QSpinBox:down-button:focus{
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 113, 255, 255), stop:1 rgba(91, 171, 252, 255));
+}
+
+QSpinBox::down-arrow:pressed{
+background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-bottom-right-radius: 3px;
+}
+
+QSpinBox::up-arrow:pressed{
+background-color:  qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(0, 83, 255, 255), stop:1 rgba(61, 141, 222, 255));
+border-top-right-radius: 3px;
+}
+
+
+
+
+
+
+
+</string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>4</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="Restart_label">
+         <property name="font">
+          <font>
+           <underline>true</underline>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(255, 0, 0);</string>
+         </property>
+         <property name="text">
+          <string>Save settings &amp; Restart to apply</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QFrame" name="border_center">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>9</y>
+        <width>1</width>
+        <height>127</height>
+       </rect>
+      </property>
+      <property name="statusTip">
+       <string notr="true"/>
+      </property>
+      <property name="accessibleName">
+       <string notr="true"/>
+      </property>
+      <property name="accessibleDescription">
+       <string notr="true"/>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px dashed gray;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Icon_image">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>20</y>
+        <width>64</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Resources.qrc">:/Icon/Files/Icon/TimeES icon.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_About1">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>20</y>
+        <width>151</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Heavy</family>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <stylestrategy>PreferAntialias</stylestrategy>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>About Estimator</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_About2">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>40</y>
+        <width>151</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <stylestrategy>PreferAntialias</stylestrategy>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>version: v5.0</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Visit_website">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>110</y>
+        <width>81</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arca Majora 3 Bold</family>
+        <pointsize>8</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#Visit_website {
+background: #ffffff;
+border-radius: 0px;
+border: 0.75px solid #656565;
+color:black;
+}
+#Visit_website:hover
+{
+border: 1.25px solid #00BFF3;
+color:#00bff3
+}
+#Visit_website:pressed
+{
+ border: 1.25px solid #656565;
+color:black;
+}</string>
+      </property>
+      <property name="text">
+       <string>Visit Website</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="infoPage">
+     <attribute name="title">
+      <string>Read Me</string>
+     </attribute>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>524</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QScrollBar:vertical {
+  background: palette(base);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  width: 16px;
+  margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+  background-color: palette(midlight);
+  border-radius: 2px;
+  min-height: 20px;
+  margin: 2px 4px 2px 4px;
+}
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover, QScrollBar::handle:vertical:pressed, QScrollBar::handle:horizontal:pressed {
+  background-color:palette(highlight);
+}
+
+QScrollBar::add-line:vertical {
+  background: none;
+  height: 0px;
+  subcontrol-position: right;
+  subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:vertical {
+  background: none;
+  height: 0px;
+  subcontrol-position: left;
+  subcontrol-origin: margin;
+}
+</string>
+      </property>
+      <property name="html">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Arca Majora 3 Heavy'; font-size:16pt; font-weight:600; text-decoration: underline;&quot;&gt;Please Read&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;This is NOT a malware!&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Since this app is not registered anywhere, some antivirus software might flag this app. Also, Facebook might not allow a link to it on some of the file hosting services like MEGA to be posted.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;What was that CMD window?&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;The CMD window that pops up while the app is launching might trip some of you so this is a clarification: The console window is mandatory for this app to function since “internet speed test” uses it to send commands to ookla's api, it is launched and then hidden.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;Nice font, what is its name?&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Font used is Arca Majora 3, This is an old version as of May 2021 and it was free for personal use only. meaning you can't reuse it in other projects.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Notes:&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Time Estimator and Data Estimator use kibibytes or KiB and it is equal to 1024 bytes, but both refer to them as Kilobytes which equals to 1000 bytes since this is the more commonly known terminology.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;To check for updates, just visit the website and look in changelog. The software has clear version numbering.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Dark mode breaks toolTips as it's just a wrapper, It is not officially supported.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This app is designed to work on windows only, the source code is available if you decide to port it to any other OS.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This app is designed to work on 1080p monitors at 100% scaling, any other scaling might break the layout but it will still function. in case the scaling hid something, use the (unsupported) inapp scaling option instead.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;This app is its programmer's first, please don't judge, your help is appreciated.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>tabWidget</zorder>
+   <zorder>border_left</zorder>
+   <zorder>Top</zorder>
+   <zorder>border_right</zorder>
+   <zorder>border_bottom</zorder>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>input_AvSp</tabstop>
+  <tabstop>input_Si</tabstop>
+  <tabstop>RB_KBs</tabstop>
+  <tabstop>RB_MBs</tabstop>
+  <tabstop>RB_Mbs</tabstop>
+  <tabstop>RB_MB</tabstop>
+  <tabstop>RB_GB</tabstop>
+  <tabstop>RB_TB</tabstop>
+  <tabstop>input_Comp</tabstop>
+  <tabstop>Start_PB</tabstop>
+  <tabstop>cls_PB</tabstop>
+ </tabstops>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

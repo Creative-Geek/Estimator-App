@@ -1,0 +1,40 @@
+<RCC>
+  <qresource prefix="Icon">
+    <file>Files/Icon/TimeES icon.png</file>
+  </qresource>
+  <qresource prefix="Arrows">
+    <file>Files/Buttons/Arrow/down_arrow_dark.png</file>
+    <file>Files/Buttons/Arrow/down_arrow_lighter.png</file>
+    <file>Files/Buttons/Arrow/up_arrow_dark.png</file>
+    <file>Files/Buttons/Arrow/up_arrow_lighter.png</file>
+  </qresource>
+  <qresource prefix="Themes">
+    <file>Files/Theme/Ready/AMOLED.qss</file>
+    <file>Files/Theme/Ready/Aqua.qss</file>
+    <file>Files/Theme/Ready/ConsoleStyle.qss</file>
+    <file>Files/Theme/Ready/darkmodern.qss</file>
+    <file>Files/Theme/Ready/diagbutton.qss</file>
+    <file>Files/Theme/Ready/ElegantDark.qss</file>
+    <file>Files/Theme/Ready/Hookmark.qss</file>
+    <file>Files/Theme/Ready/light-blue.qss</file>
+    <file>Files/Theme/Ready/MacOS.qss</file>
+    <file>Files/Theme/Ready/ManjaroMix.qss</file>
+    <file>Files/Theme/Ready/MaterialDark.qss</file>
+    <file>Files/Theme/Ready/NeonButtons.qss</file>
+    <file>Files/Theme/Ready/Ubuntu.qss</file>
+  </qresource>
+  <qresource prefix="dropDown">
+    <file>Files/Buttons/dropDown/dropDown-hover.png</file>
+    <file>Files/Buttons/dropDown/dropdown.png</file>
+  </qresource>
+  <qresource prefix="Animation">
+    <file>Files/Animation/loader.gif</file>
+  </qresource>
+  <qresource prefix="Font">
+    <file>Files/Fonts/ArcaMajora3-Bold.otf</file>
+    <file>Files/Fonts/ArcaMajora3-Heavy.otf</file>
+  </qresource>
+  <qresource prefix="/go_to_Time">
+    <file>Files/Buttons/go_to_Time/Normal.png</file>
+  </qresource>
+</RCC>
