@@ -11,3 +11,5 @@ Enter the speed at which you can transfer/download files and the time window you
 * If you have a transfer that is already in progress, you can specify the completed percentage.
 * You can test the transfer/download speed right from the app.
 * Dark mode
+
+Website: https://creative-geek.github.io/estimator
