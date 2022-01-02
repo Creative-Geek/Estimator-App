@@ -1,3 +1,4 @@
+![Logo](https://creative-geek.github.io/estimator/assets/logo.svg)
 # Estimator
 Simple application to plan data transfers.
 ## Main Functionalities:
